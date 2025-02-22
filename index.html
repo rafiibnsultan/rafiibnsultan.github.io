@@ -21,11 +21,37 @@
   
   <style>
     body { font-size: 1rem; }
-    .container-fluid { max-width: 1000px; margin: auto; }
-    .resume-section { padding: 2rem 0; }
-    .resume-section h2 { margin-bottom: 1.5rem; }
-    .social-icons a { margin-right: 10px; }
-    .navbar-nav { width: 100%; }
+    /* Limit the maximum width of the main content */
+.container-fluid {
+    max-width: 1000px; /* Adjust as needed */
+    margin: auto;
+}
+
+/* Reduce padding in sections */
+.resume-section {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center; /* Center align content */
+}
+
+/* Make text more readable and prevent excessive stretching */
+.resume-section p {
+    max-width: 750px; /* Prevent text from stretching too much */
+    margin: auto;
+    text-align: justify;
+}
+
+/* Adjust sidebar width to reduce empty space */
+#sideNav {
+    width: 250px; /* Reduce sidebar width */
+}
+
+/* Properly align social icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Reduce spacing */
+}
   </style>
 </head>
 
@@ -153,7 +179,6 @@
               <br> Regarding geographical image segmentation, our goal is to develop a pedestrian network capable of segmenting different pedestrian objects, including roadways, sidewalks, crosswalks, and curb ramps.
               This task is crucial for applications involving satellite/ aerial imagery. Our recent work on this area can be found here: <a href="https://arxiv.org/abs/2311.11319" target="_blank">"GeoSAM: Fine-tuning SAM with Sparse and Dense Visual Prompting for Automated Segmentation of Mobility Infrastructure",</a>
               <br> Additionally, I also engage in algorithm optimization techniques as part of my work.
-              <br> I keep a github repository for tracking important papers related to my research work or works that I intend to do in the future. Feel free to take a look: <a href="https://github.com/rafiibnsultan/Geo_Segmentation_SAM/tree/main">Github Repo.</a>
             </p>
     
             <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5 " align="left">
