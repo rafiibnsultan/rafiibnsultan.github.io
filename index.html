@@ -20,38 +20,49 @@
   <link href="css/resume.min.css" rel="stylesheet">
   
   <style>
-    body { font-size: 1rem; }
-    /* Limit the maximum width of the main content */
+    /* Limit content width for readability */
 .container-fluid {
-    max-width: 1000px; /* Adjust as needed */
+    max-width: 1000px;
     margin: auto;
+    padding: 0 20px; /* Add slight padding to prevent text from touching edges */
 }
 
-/* Reduce padding in sections */
+/* Ensure sections are centered and properly spaced */
 .resume-section {
-    padding: 2rem 0;
     display: flex;
-    justify-content: center; /* Center align content */
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 0; /* Reduce excessive spacing */
 }
 
-/* Make text more readable and prevent excessive stretching */
-.resume-section p {
-    max-width: 750px; /* Prevent text from stretching too much */
-    margin: auto;
-    text-align: justify;
+/* Proper text width to prevent long text lines */
+.resume-section h1,
+.resume-section h2,
+.resume-section p,
+.resume-section ul {
+    max-width: 800px; /* Limit width of text content */
+    width: 100%;
+    text-align: center; /* Center-align content */
 }
 
-/* Adjust sidebar width to reduce empty space */
+/* Ensure side navigation does not take too much space */
 #sideNav {
-    width: 250px; /* Reduce sidebar width */
+    width: 220px; /* Reduce sidebar width */
 }
 
-/* Properly align social icons */
+/* Social icons spacing */
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 15px; /* Reduce spacing */
+    gap: 15px;
 }
+
+/* Adjust unordered list styles */
+.resume-section ul {
+    text-align: left; /* Align text properly for readability */
+    margin: auto;
+}
+
   </style>
 </head>
 
