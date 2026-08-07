@@ -726,7 +726,66 @@
     .chip-list li:hover { border-color: var(--accent); color: var(--accent); }
     .chip-list a { color: inherit; text-decoration: none; }
 
-    .interests { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+    .interests {
+      list-style: none; margin: 0; padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+      gap: .8rem 2rem;
+    }
+
+    /* ---------- Photo mosaic ----------
+       CSS columns give true masonry with no JS: each tile keeps its own
+       aspect ratio and the shortest column absorbs the next photo. */
+    .gallery {
+      columns: 3 15rem;
+      column-gap: .8rem;
+      margin-top: 2.75rem;
+    }
+    .gallery figure {
+      break-inside: avoid;
+      position: relative;
+      margin: 0 0 .8rem;
+      border-radius: 9px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: var(--bg-sunken);
+      line-height: 0;
+    }
+    .gallery a { display: block; text-decoration: none; }
+    .gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform .5s var(--ease);
+    }
+    .gallery figure:hover img { transform: scale(1.04); }
+
+    .gallery figcaption {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 2.2rem .8rem .65rem;
+      background: linear-gradient(to top, rgba(10,12,15,.88), rgba(10,12,15,.35) 55%, transparent);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 600;
+      line-height: 1.4;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .3s var(--ease), transform .3s var(--ease);
+    }
+    .gallery figcaption span {
+      display: block;
+      font-weight: 400;
+      font-size: .72rem;
+      opacity: .82;
+    }
+    .gallery figure:hover figcaption,
+    .gallery figure:focus-within figcaption { opacity: 1; transform: none; }
+
+    /* Touch devices have no hover state — keep captions permanently visible */
+    @media (hover: none) {
+      .gallery figcaption { opacity: 1; transform: none; }
+    }
     .interests li {
       display: flex;
       gap: .85rem;
@@ -820,7 +879,7 @@
         --rule: #ccc; --rule-strong: #999;
         --shadow: none; --shadow-lift: none;
       }
-      .sidebar, .theme-toggle, .more-btn, .cta-row, .pub__figure { display: none !important; }
+      .sidebar, .theme-toggle, .more-btn, .cta-row, .pub__figure, .gallery { display: none !important; }
       .main { margin-left: 0; }
       .section { padding: 1rem 0; border-bottom: 1px solid #ccc; break-inside: avoid; }
       .pub { padding: .5rem 0; margin: 0 0 .5rem; break-inside: avoid; }
@@ -1381,21 +1440,89 @@
         <ul class="interests reveal-child">
           <li style="--i:0">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20m0 2c1.5 0 2.9.4 4.1 1.1l-1.6 2.4-4.9-1.6-.5-2.6A8 8 0 0112 4M6.3 6.4l2.3 1.2.9 5-4.2 3-2.1-1.3A8 8 0 016.3 6.4m11.4 0a8 8 0 013.1 7.9l-2.1 1.3-4.2-3 .9-5zM9.5 19.7l-1-2.5 2.6-3h1.8l2.6 3-1 2.5a8 8 0 01-5 0"/></svg>
-            <span>Soccer — a loyal Real Madrid fan</span>
+            <span>Football — a lifelong Real Madrid loyalist, and I'll defend Cristiano Ronaldo in any argument</span>
           </li>
           <li style="--i:1">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3z"/></svg>
-            <span>Beginner acoustic guitarist</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg>
+            <span>Anime — always mid-series, always open to recommendations</span>
           </li>
           <li style="--i:2">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L2 21h8.2l1.8-3.2 1.8 3.2H22L12 3z"/></svg>
+            <span>Camping — weekends under canvas whenever the season allows</span>
+          </li>
+          <li style="--i:3">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l-4.22 5.63 1.25 1.67L14 9.33 19 16h-8.46l-4.01-5.37L1 18h22L14 6z"/></svg>
+            <span>Hiking — trails are where I do my best thinking</span>
+          </li>
+          <li style="--i:4">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 6h9a5.5 5.5 0 015.5 5.5v1A5.5 5.5 0 0116.5 18c-1.5 0-2.3-.6-3.2-1.5h-2.6C9.8 17.4 9 18 7.5 18A5.5 5.5 0 012 12.5v-1A5.5 5.5 0 017.5 6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm10 1a1 1 0 100 2 1 1 0 000-2m2 3a1 1 0 100 2 1 1 0 000-2"/></svg>
             <span>Gaming — FIFA since '98, a Killjoy main in Valorant, and new to CS2</span>
           </li>
-          <li style="--i:3">
+          <li style="--i:5">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V4h-4z"/></svg>
+            <span>Movies &amp; series — a reliable way to lose an evening</span>
+          </li>
+          <li style="--i:6">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3z"/></svg>
+            <span>Beginner acoustic guitarist</span>
+          </li>
+          <li style="--i:7">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7m0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
             <span>Travel — working toward all 50 states</span>
           </li>
         </ul>
+
+        <h3 class="subhead">Conferences &amp; Lab Life</h3>
+
+        <div class="gallery">
+          <figure>
+            <a href="img/life/cvpr-presentation.jpg" target="_blank" rel="noopener">
+              <img src="img/life/cvpr-presentation.jpg" width="1000" height="750" loading="lazy"
+                   alt="Standing beside the WalkGPT poster at CVPR, which lays out the framework, the PAVE dataset construction, and qualitative navigation results.">
+            </a>
+            <figcaption>WalkGPT at CVPR 2026<span>Denver, Colorado</span></figcaption>
+          </figure>
+
+          <figure>
+            <a href="img/life/pizza-party-with-the-lab.jpg" target="_blank" rel="noopener">
+              <img src="img/life/pizza-party-with-the-lab.jpg" width="1000" height="1480" loading="lazy"
+                   alt="Members of the Trustworthy AI Lab gathered around a table of Detroit-style square pizza, raising their glasses toward the camera.">
+            </a>
+            <figcaption>Pizza with the lab<span>Detroit, Michigan</span></figcaption>
+          </figure>
+
+          <figure>
+            <a href="img/life/best-graduate-research-assistant.jpg" target="_blank" rel="noopener">
+              <img src="img/life/best-graduate-research-assistant.jpg" width="1000" height="508" loading="lazy"
+                   alt="Holding a Wayne State University research excellence certificate alongside two fellow award recipients and a faculty member.">
+            </a>
+            <figcaption>Best Graduate Research Assistant<span>Wayne State University</span></figcaption>
+          </figure>
+
+          <figure>
+            <a href="img/life/wacv-presentation.jpg" target="_blank" rel="noopener">
+              <img src="img/life/wacv-presentation.jpg" width="1000" height="1333" loading="lazy"
+                   alt="Standing beside the AutoProSAM poster at WACV 2025, showing the architecture components and multi-organ segmentation results.">
+            </a>
+            <figcaption>AutoProSAM at WACV 2025<span>Tucson, Arizona</span></figcaption>
+          </figure>
+
+          <figure>
+            <a href="img/life/thanksgiving-party-with-the-lab.jpg" target="_blank" rel="noopener">
+              <img src="img/life/thanksgiving-party-with-the-lab.jpg" width="1000" height="491" loading="lazy"
+                   alt="The lab group seated along a long table at a Detroit taproom, raising glasses for a Thanksgiving gathering.">
+            </a>
+            <figcaption>Thanksgiving with the lab<span>Detroit, Michigan</span></figcaption>
+          </figure>
+
+          <figure>
+            <a href="img/life/july-4th-at-professor-zhus-home.jpg" target="_blank" rel="noopener">
+              <img src="img/life/july-4th-at-professor-zhus-home.jpg" width="1000" height="670" loading="lazy"
+                   alt="The Trustworthy AI Lab gathered for a group photo in a backyard on the Fourth of July.">
+            </a>
+            <figcaption>Fourth of July at Prof. Zhu's<span>Trustworthy AI Lab</span></figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
