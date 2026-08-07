@@ -661,6 +661,34 @@
     }
     .timeline__meta { font-size: .89rem; color: var(--text-muted); margin-top: .15rem; }
 
+    .timeline__points {
+      list-style: none;
+      margin: .6rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: .4rem;
+      max-width: var(--measure);
+    }
+    /* Extra specificity so these beat the `.timeline li` dot rules above,
+       which would otherwise also match these nested list items. */
+    .timeline .timeline__points li {
+      position: relative;
+      padding: 0 0 0 1rem;
+      font-size: .9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .timeline .timeline__points li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: .62em;
+      width: .3rem; height: 1.5px;
+      border: 0;
+      border-radius: 0;
+      background: var(--rule-strong);
+      transform: none;
+    }
+
     /* ---------- News ---------- */
     .news { list-style: none; margin: 0; padding: 0; }
     .news li {
@@ -747,6 +775,17 @@
     }
     .chip-list li:hover { border-color: var(--accent); color: var(--accent); }
     .chip-list a { color: inherit; text-decoration: none; }
+
+    .skills { display: grid; gap: 1.35rem; }
+    .skills__label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: .5rem;
+    }
 
     .interests {
       list-style: none; margin: 0; padding: 0;
@@ -933,7 +972,7 @@
       <a class="nav__link" href="#about">About</a>
       <a class="nav__link" href="#research">Research</a>
       <a class="nav__link" href="#publications">Publications</a>
-      <a class="nav__link" href="#talks">Talks &amp; Media</a>
+      <a class="nav__link" href="#talks">Talks &amp; Service</a>
       <a class="nav__link" href="#news">News</a>
       <a class="nav__link" href="#experience">Experience</a>
       <a class="nav__link" href="#education">Education</a>
@@ -1044,8 +1083,9 @@
           <p>Earlier in this line, <em>GeoSAM</em> (ECAI 2025) introduced sparse- and dense-prompt fine-tuning of SAM
             for large-scale mobility-infrastructure segmentation from aerial and street-level imagery. It has since
             been adopted as a benchmark in subsequent NeurIPS work.</p>
-          <p>I'm currently extending this toward stronger spatial reasoning in vision–language models at scale —
-            pushing past surface-level description toward reliable spatial and logical inference across complex scenes.</p>
+          <p>I'm currently extending this toward stronger spatial reasoning in vision–language models at scale.
+            <em>SpatialCORE</em> (under review) targets spatially confident reasoning in large VLMs — pushing past
+            surface-level description toward predictions that are grounded in visual evidence rather than asserted.</p>
         </div>
 
         <div class="theme-block">
@@ -1058,6 +1098,33 @@
             using novel encoder–decoder architectures — important for radiotherapy planning, since the LAD is highly
             sensitive to radiation injury. That work was presented at AAPM 2025 and is forthcoming in
             <em>Medical Physics</em>.</p>
+        </div>
+
+        <h3 class="subhead">Technical Skills</h3>
+
+        <div class="skills">
+          <div class="skills__group">
+            <span class="skills__label">Programming &amp; Systems</span>
+            <ul class="chip-list">
+              <li>Python</li><li>PyTorch</li><li>Linux</li><li>Git</li><li>LaTeX</li>
+              <li>Multi-GPU training</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <span class="skills__label">Models &amp; Methods</span>
+            <ul class="chip-list">
+              <li>Vision transformers</li><li>SAM</li><li>Large vision–language models</li>
+              <li>LoRA / PEFT</li><li>Contrastive learning</li><li>Segmentation</li>
+              <li>Grounding</li><li>Representation learning</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <span class="skills__label">Tools &amp; Libraries</span>
+            <ul class="chip-list">
+              <li>HuggingFace</li><li>MONAI</li><li>OpenCV</li><li>scikit-learn</li>
+              <li>Weights &amp; Biases</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -1151,6 +1218,20 @@
           </li>
           <li>
             <div>
+              <div class="pub-compact__title">On Federated Compositional Optimization: Algorithms, Analysis, and Guarantees</div>
+              <div class="pub-compact__authors">Prashant Khanduri, Chengyin Li, <b>Rafi Ibn Sultan</b>, et al.</div>
+            </div>
+            <div class="pub-compact__venue">TMLR · 2026</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">FluenceFormer: Transformer-Driven Multi-Beam Fluence Map Regression for Radiotherapy Planning</div>
+              <div class="pub-compact__authors">U. Mgboh, <b>Rafi Ibn Sultan</b>, J. Kim, K. Thind, Dongxiao Zhu</div>
+            </div>
+            <div class="pub-compact__venue">MIDL · 2026</div>
+          </li>
+          <li>
+            <div>
               <div class="pub-compact__title">
                 <a href="https://arxiv.org/abs/2311.11319" target="_blank" rel="noopener">GeoSAM: Fine-tuning SAM with Multi-Modal Prompts for Mobility Infrastructure Segmentation</a>
               </div>
@@ -1174,7 +1255,7 @@
           </li>
           <li>
             <div>
-              <div class="pub-compact__title">MulModSeg: Enhancing Unpaired Multi-Modal Medical Image Segmentation with Modality-Conditioned Text Embedding</div>
+              <div class="pub-compact__title">MulModSeg: Enhancing Unpaired Multi-Modal Medical Image Segmentation with Modality-Conditioned Text Embedding and Alternating Training</div>
               <div class="pub-compact__authors">Chengyin Li, Hui Zhu, <b>Rafi Ibn Sultan</b>, Dongxiao Zhu</div>
             </div>
             <div class="pub-compact__venue">WACV · 2025</div>
@@ -1182,7 +1263,7 @@
           <li>
             <div>
               <div class="pub-compact__title">
-                <a href="https://aapm.onlinelibrary.wiley.com/doi/epdf/10.1002/mp.16750" target="_blank" rel="noopener">A New Architecture Combining Convolutional and Transformer-Based Networks for Automatic 3D Segmentation of Pelvic Anatomy</a>
+                <a href="https://aapm.onlinelibrary.wiley.com/doi/epdf/10.1002/mp.16750" target="_blank" rel="noopener">A New Architecture Combining Convolutional and Transformer-Based Networks for Automatic 3D Multi-Organ Segmentation on CT Images</a>
               </div>
               <div class="pub-compact__authors">Chengyin Li, Hassan Bagher-Ebadian, <b>Rafi Ibn Sultan</b>, Dongxiao Zhu, Indrin Chetty</div>
             </div>
@@ -1248,6 +1329,13 @@
         <ul class="pub-compact">
           <li>
             <div>
+              <div class="pub-compact__title">SpatialCORE: Spatially Confident Reasoning for Large Vision-Language Models</div>
+              <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, et al.</div>
+            </div>
+            <div class="pub-compact__venue">Under review · 2026</div>
+          </li>
+          <li>
+            <div>
               <div class="pub-compact__title">MedPlex: Deep Vision-Language Co-Adaptation for Clinically Grounded Medical Segmentation</div>
               <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, et al.</div>
             </div>
@@ -1256,7 +1344,7 @@
           <li>
             <div>
               <div class="pub-compact__title">
-                <a href="https://arxiv.org/abs/2503.23534" target="_blank" rel="noopener">BiPVL-Seg: Bidirectional Progressive Vision-Language Fusion for Medical Image Segmentation</a>
+                <a href="https://arxiv.org/abs/2503.23534" target="_blank" rel="noopener">BiPVL-Seg: Bidirectional Progressive Vision-Language Fusion with Global-Local Alignment for Medical Image Segmentation</a>
               </div>
               <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, et al.</div>
             </div>
@@ -1273,47 +1361,79 @@
     <!-- ---------- Talks & Media ---------- -->
     <section class="section" id="talks">
       <div class="section__inner reveal">
-        <span class="section__label">Talks &amp; Media</span>
-        <h2>Selected talks, coverage &amp; service</h2>
+        <span class="section__label">Talks &amp; Service</span>
+        <h2>Talks, coverage &amp; recognition</h2>
 
         <div class="media-grid reveal-child">
-          <a class="media-card" href="https://www.pbs.org/video/wayne-state-university-creates-ai-for-mobility-project-criquh/" target="_blank" rel="noopener" style="--i:0">
+          <div class="media-card" style="--i:0">
+            <span class="media-card__kind">Invited Talk</span>
+            <div class="media-card__title">WalkGPT: Pixel-Grounded Navigation Guidance for Pedestrians</div>
+            <div class="media-card__meta">Best of CVPR 2026 Series, Voxel51 · July 2026 (virtual)</div>
+          </div>
+
+          <div class="media-card" style="--i:1">
+            <span class="media-card__kind">Invited Talk</span>
+            <div class="media-card__title">WalkGPT: Grounded Vision–Language Conversation with Depth-Aware Segmentation for Pedestrian Navigation</div>
+            <div class="media-card__meta">Computer Vision Group, Cohere Labs Open Science Community · May 2026 (virtual)</div>
+          </div>
+
+          <div class="media-card" style="--i:2">
+            <span class="media-card__kind">Invited Talk</span>
+            <div class="media-card__title">Multimodal AI for Mobility Infrastructure and Pedestrian Guidance</div>
+            <div class="media-card__meta">Departmental Seminar, Wayne State University · January 2026</div>
+          </div>
+
+          <a class="media-card" href="https://www.pbs.org/video/wayne-state-university-creates-ai-for-mobility-project-criquh/" target="_blank" rel="noopener" style="--i:3">
             <span class="media-card__kind">Press</span>
             <div class="media-card__title">Detroit PBS: Wayne State Creates AI for Mobility Project</div>
             <div class="media-card__meta">Feature on our lab and GeoSAM · April 2024</div>
           </a>
 
-          <a class="media-card" href="https://youtu.be/I37hSEy7fXs" target="_blank" rel="noopener" style="--i:1">
+          <a class="media-card" href="https://youtu.be/I37hSEy7fXs" target="_blank" rel="noopener" style="--i:4">
             <span class="media-card__kind">Conference Talk</span>
             <div class="media-card__title">AutoProSAM presentation at WACV 2025</div>
             <div class="media-card__meta">Tucson, Arizona · February 2025</div>
           </a>
 
-          <div class="media-card" style="--i:2">
-            <span class="media-card__kind">Invited Talk</span>
-            <div class="media-card__title">From Mobility Infrastructure Segmentation to Pedestrian Guidance: A Multimodal AI Perspective</div>
-            <div class="media-card__meta">Guest graduate speaker, Computer Science Department, Wayne State University · January 2026</div>
-          </div>
-
-          <div class="media-card" style="--i:3">
+          <div class="media-card" style="--i:5">
             <span class="media-card__kind">Service</span>
             <div class="media-card__title">Program Committee, IJCAI 2026</div>
             <div class="media-card__meta">International Joint Conference on Artificial Intelligence</div>
           </div>
         </div>
 
-        <h3 class="subhead">Journal &amp; Conference Reviewing</h3>
+        <h3 class="subhead">Awards &amp; Honors</h3>
+        <ul class="timeline">
+          <li>
+            <div class="timeline__head">
+              <span class="timeline__title">Best Graduate Research Award</span>
+              <span class="timeline__date">2025</span>
+            </div>
+            <div class="timeline__meta">Department of Computer Science, Wayne State University</div>
+          </li>
+        </ul>
+
+        <h3 class="subhead">Conference Reviewing</h3>
+        <ul class="chip-list">
+          <li>NeurIPS 2026</li>
+          <li>IJCAI-ECAI 2026</li>
+          <li>BMVC 2026</li>
+          <li>ECCV</li>
+          <li><a href="https://2025.ijcnn.org/" target="_blank" rel="noopener">IJCNN 2025</a></li>
+        </ul>
+
+        <h3 class="subhead">Journal Reviewing</h3>
         <ul class="chip-list">
           <li><a href="https://www.sciencedirect.com/journal/pattern-recognition" target="_blank" rel="noopener">Pattern Recognition</a></li>
+          <li><a href="https://www.sciencedirect.com/journal/computer-vision-and-image-understanding" target="_blank" rel="noopener">Computer Vision and Image Understanding</a></li>
+          <li>IEEE Transactions on Circuits and Systems for Video Technology</li>
           <li><a href="https://www.sciencedirect.com/journal/knowledge-based-systems" target="_blank" rel="noopener">Knowledge-Based Systems</a></li>
           <li><a href="https://www.sciencedirect.com/journal/computer-methods-and-programs-in-biomedicine" target="_blank" rel="noopener">Computer Methods and Programs in Biomedicine</a></li>
+          <li><a href="https://www.sciencedirect.com/journal/computers-in-biology-and-medicine" target="_blank" rel="noopener">Computers in Biology and Medicine</a></li>
           <li><a href="https://www.sciencedirect.com/journal/biomedical-signal-processing-and-control" target="_blank" rel="noopener">Biomedical Signal Processing and Control</a></li>
-          <li><a href="https://www.sciencedirect.com/journal/computer-vision-and-image-understanding" target="_blank" rel="noopener">Computer Vision and Image Understanding</a></li>
+          <li><a href="https://www.sciencedirect.com/journal/results-in-engineering" target="_blank" rel="noopener">Results in Engineering</a></li>
           <li><a href="https://www.sciencedirect.com/journal/expert-systems-with-applications" target="_blank" rel="noopener">Expert Systems with Applications</a></li>
           <li>IEEE Transactions on Medical Imaging</li>
-          <li>ECCV</li>
-          <li>NeurIPS</li>
-          <li><a href="https://2025.ijcnn.org/" target="_blank" rel="noopener">IJCNN 2025</a></li>
         </ul>
       </div>
     </section>
@@ -1328,10 +1448,6 @@
           <li>
             <span class="news__date">Aug 4, 2026</span>
             <span class="news__body">Our paper with Henry Ford Hospital, <b>"A Neighborhood Attention Transformer Network for Enhanced 3D Segmentation of the Left Anterior Descending Artery,"</b> has been accepted to <i>Medical Physics</i>.</span>
-          </li>
-          <li>
-            <span class="news__date">Apr 16, 2026</span>
-            <span class="news__body">Received the <b>Best Graduate Research Assistant</b> award from the Department of Computer Science at Wayne State University.</span>
           </li>
           <li>
             <span class="news__date">Feb 20, 2026</span>
@@ -1356,6 +1472,10 @@
           <li hidden>
             <span class="news__date">Apr 25, 2025</span>
             <span class="news__body">Our work <b>NA-UNETR</b> was presented as a poster at <b>AAPM 2025</b>.</span>
+          </li>
+          <li hidden>
+            <span class="news__date">Apr 16, 2025</span>
+            <span class="news__body">Received the <b>Best Graduate Research Award</b> from the Department of Computer Science at Wayne State University.</span>
           </li>
           <li hidden>
             <span class="news__date">Apr 1, 2025</span>
@@ -1399,19 +1519,32 @@
           <li>
             <div class="timeline__head">
               <span class="timeline__title">Graduate Research Assistant</span>
-              <span class="timeline__date">May 2022 — Present</span>
+              <span class="timeline__date">Sep 2023 — Present</span>
             </div>
             <div class="timeline__meta">
               <a href="https://sites.google.com/view/mlpa/mainpage/members?authuser=0" target="_blank" rel="noopener">Trustworthy AI Lab</a>,
               Department of Computer Science, Wayne State University · Detroit, MI
             </div>
+            <ul class="timeline__points">
+              <li>Lead independent research on grounded vision–language models for spatial reasoning, pedestrian
+                navigation, and medical image segmentation — from problem formulation through publication, resulting
+                in first-author papers at CVPR and ECAI.</li>
+              <li>Drive an ongoing clinical collaboration with Henry Ford Hospital on coronary CT segmentation,
+                translating clinician requirements into model design and working directly with radiology partners on
+                data, evaluation, and deployment-relevant validation.</li>
+              <li>Mentor junior Ph.D. students on research methodology, experimental design, and paper writing.</li>
+            </ul>
           </li>
           <li>
             <div class="timeline__head">
               <span class="timeline__title">Graduate Teaching Assistant</span>
-              <span class="timeline__date">Aug 2022 — May 2023</span>
+              <span class="timeline__date">Aug 2022 — Aug 2023</span>
             </div>
             <div class="timeline__meta">Department of Computer Science, Wayne State University · Detroit, MI</div>
+            <ul class="timeline__points">
+              <li>Led Software Engineering labs, supervising 5–6 project teams of 4–5 students each per term through
+                the full development lifecycle, from requirements to delivery.</li>
+            </ul>
           </li>
           <li>
             <div class="timeline__head">
@@ -1419,6 +1552,11 @@
               <span class="timeline__date">Oct 2019 — Aug 2022</span>
             </div>
             <div class="timeline__meta">Department of Computer Science and Engineering, Varendra University · Rajshahi, Bangladesh</div>
+            <ul class="timeline__points">
+              <li>Sole instructor for undergraduate courses including Microprocessor and Assembly Language,
+                Object-Oriented Programming, and Computer Fundamentals — 30–40 students per course.</li>
+              <li>Supervised roughly 8 undergraduate final-year thesis and capstone projects from proposal to defense.</li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -1434,7 +1572,17 @@
           <li>
             <div class="timeline__head">
               <span class="timeline__title">Ph.D. in Computer Science</span>
-              <span class="timeline__date">Sep 2022 — Present</span>
+              <span class="timeline__date">Sep 2022 — Expected Aug 2027</span>
+            </div>
+            <div class="timeline__meta">
+              Wayne State University · Detroit, MI<br>
+              Advisor: <a href="https://sites.google.com/view/mlpa/mainpage" target="_blank" rel="noopener">Prof. Dongxiao Zhu</a>
+            </div>
+          </li>
+          <li>
+            <div class="timeline__head">
+              <span class="timeline__title">M.Sc. in Computer Science</span>
+              <span class="timeline__date">Dec 2025</span>
             </div>
             <div class="timeline__meta">Wayne State University · Detroit, MI</div>
           </li>
@@ -1524,11 +1672,11 @@
           </figure>
 
           <figure>
-            <a href="img/life/best-graduate-research-assistant.jpg" target="_blank" rel="noopener">
-              <img src="img/life/best-graduate-research-assistant.jpg" width="1000" height="508" loading="lazy"
+            <a href="img/life/best-graduate-research-award.jpg" target="_blank" rel="noopener">
+              <img src="img/life/best-graduate-research-award.jpg" width="1000" height="508" loading="lazy"
                    alt="Holding a Wayne State University research excellence certificate alongside two fellow award recipients and a faculty member.">
             </a>
-            <figcaption>Best Graduate Research Assistant<span>Wayne State University</span></figcaption>
+            <figcaption>Best Graduate Research Award<span>Wayne State University · 2025</span></figcaption>
           </figure>
 
           <figure>
@@ -1653,7 +1801,7 @@
         geosam: '@inproceedings{sultan2025geosam,\n  title     = {GeoSAM: Fine-tuning SAM with Multi-Modal Prompts for Mobility Infrastructure Segmentation},\n  author    = {Sultan, Rafi Ibn and Li, Chengyin and Zhu, Hui and Khanduri, Prashant and Brocanelli, Marco and Zhu, Dongxiao},\n  booktitle = {European Conference on Artificial Intelligence (ECAI)},\n  year      = {2025}\n}',
         naunetr: '@article{sultan2026naunetr,\n  title   = {NA-UNETR: A Neighborhood Attention Transformer Network for Enhanced 3D Segmentation of the Left Anterior Descending Artery},\n  author  = {Sultan, Rafi Ibn and others},\n  journal = {Medical Physics},\n  year    = {2026}\n}',
         medplex: '@unpublished{sultan2026medplex,\n  title  = {MedPlex: Deep Vision-Language Co-Adaptation for Clinically Grounded Medical Segmentation},\n  author = {Sultan, Rafi Ibn and others},\n  note   = {Under review},\n  year   = {2026}\n}',
-        bipvl: '@article{sultan2025bipvl,\n  title   = {BiPVL-Seg: Bidirectional Progressive Vision-Language Fusion for Medical Image Segmentation},\n  author  = {Sultan, Rafi Ibn and others},\n  journal = {arXiv preprint arXiv:2503.23534},\n  year    = {2025}\n}'
+        bipvl: '@article{sultan2025bipvl,\n  title   = {BiPVL-Seg: Bidirectional Progressive Vision-Language Fusion with Global-Local Alignment for Medical Image Segmentation},\n  author  = {Sultan, Rafi Ibn and others},\n  journal = {arXiv preprint arXiv:2503.23534},\n  year    = {2025}\n}'
       };
 
       document.querySelectorAll("[data-bibtex]").forEach(function (btn) {
