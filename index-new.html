@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Rafi Ibn Sultan — Computer Vision &amp; Multimodal AI</title>
+  <meta name="description" content="Rafi Ibn Sultan is a Ph.D. candidate in Computer Science at Wayne State University working on vision–language models and segmentation foundation models for medical imaging and mobility infrastructure.">
+  <meta name="author" content="Rafi Ibn Sultan">
+  <link rel="canonical" href="https://rafiibnsultan.github.io/">
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Rafi Ibn Sultan — Computer Vision &amp; Multimodal AI">
+  <meta property="og:description" content="Ph.D. candidate at Wayne State University building vision–language systems that segment, ground, and reason about the world.">
+  <meta property="og:url" content="https://rafiibnsultan.github.io/">
+  <meta property="og:image" content="https://rafiibnsultan.github.io/img/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@RafiIbnSultan1">
+  <meta name="twitter:title" content="Rafi Ibn Sultan — Computer Vision &amp; Multimodal AI">
+  <meta name="twitter:description" content="Ph.D. candidate at Wayne State University building vision–language systems that segment, ground, and reason about the world.">
+  <meta name="twitter:image" content="https://rafiibnsultan.github.io/img/og-card.jpg">
+
+  <!-- Favicon: inline SVG, no extra file needed -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5257'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23f7f4ef' text-anchor='middle'%3ERS%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rafi Ibn Sultan",
+    "url": "https://rafiibnsultan.github.io/",
+    "image": "https://rafiibnsultan.github.io/img/Picture.jpg",
+    "jobTitle": "Ph.D. Candidate in Computer Science",
+    "email": "mailto:rafis@wayne.edu",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Wayne State University"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Rajshahi University of Engineering & Technology"
+    },
+    "knowsAbout": [
+      "Computer Vision",
+      "Image Segmentation",
+      "Vision-Language Models",
+      "Multimodal AI",
+      "Medical Image Analysis"
+    ],
+    "sameAs": [
+      "https://scholar.google.com/citations?hl=en&user=d9YLRmEAAAAJ",
+      "https://github.com/rafiibnsultan",
+      "https://www.linkedin.com/in/rafi-ibn-sultan/",
+      "https://twitter.com/RafiIbnSultan1",
+      "https://www.researchgate.net/profile/Rafi-Ibn-Sultan"
+    ]
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       Tokens — light is the base, dark overrides only the palette
+       ============================================================ */
+    :root {
+      --bg:            #fdfcfa;
+      --bg-raised:     #ffffff;
+      --bg-sunken:     #f4f1ec;
+      --text:          #1a1a18;
+      --text-muted:    #5f5c56;
+      --text-faint:    #8a867e;
+      --accent:        #0f5257;
+      --accent-hover:  #146b72;
+      --accent-wash:   #e6efee;
+      --rule:          #e2ddd4;
+      --rule-strong:   #cdc6ba;
+      --shadow:        0 1px 2px rgba(26,26,24,.04), 0 8px 24px -12px rgba(26,26,24,.18);
+      --shadow-lift:   0 2px 4px rgba(26,26,24,.06), 0 18px 40px -18px rgba(26,26,24,.28);
+
+      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      --sidebar-w: 17rem;
+      --measure: 68ch;
+      --ease: cubic-bezier(.2, .7, .3, 1);
+    }
+
+    :root:not([data-theme="light"]) {
+      color-scheme: light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg:           #14161a;
+        --bg-raised:    #1b1e24;
+        --bg-sunken:    #101216;
+        --text:         #e9e6e0;
+        --text-muted:   #a6a49e;
+        --text-faint:   #7c7a75;
+        --accent:       #5fb3ab;
+        --accent-hover: #7ecfc6;
+        --accent-wash:  #172c2d;
+        --rule:         #2a2e36;
+        --rule-strong:  #3a3f49;
+        --shadow:       0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+        --shadow-lift:  0 2px 4px rgba(0,0,0,.5), 0 18px 40px -18px rgba(0,0,0,.75);
+      }
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg:           #14161a;
+      --bg-raised:    #1b1e24;
+      --bg-sunken:    #101216;
+      --text:         #e9e6e0;
+      --text-muted:   #a6a49e;
+      --text-faint:   #7c7a75;
+      --accent:       #5fb3ab;
+      --accent-hover: #7ecfc6;
+      --accent-wash:  #172c2d;
+      --rule:         #2a2e36;
+      --rule-strong:  #3a3f49;
+      --shadow:       0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+      --shadow-lift:  0 2px 4px rgba(0,0,0,.5), 0 18px 40px -18px rgba(0,0,0,.75);
+    }
+
+    /* ============================================================
+       Base
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5.5rem;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: clamp(1rem, .96rem + .18vw, 1.075rem);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -.011em;
+      margin: 0;
+      text-wrap: balance;
+    }
+
+    p { margin: 0 0 1.05em; max-width: var(--measure); }
+    p:last-child { margin-bottom: 0; }
+
+    a {
+      color: var(--accent);
+      text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+      text-underline-offset: .18em;
+      text-decoration-thickness: .07em;
+      transition: color .18s var(--ease), text-decoration-color .18s var(--ease);
+    }
+    a:hover { color: var(--accent-hover); text-decoration-color: currentColor; }
+
+    :focus-visible {
+      outline: 2.5px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    ::selection { background: var(--accent-wash); color: var(--text); }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 999;
+      background: var(--accent);
+      color: #fff;
+      padding: .7rem 1.1rem;
+      border-radius: 0 0 6px 0;
+      font-weight: 600;
+    }
+    .skip-link:focus { left: 0; }
+
+    /* ============================================================
+       Sidebar navigation
+       ============================================================ */
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar-w);
+      padding: 2.5rem 1.75rem;
+      background: var(--bg-sunken);
+      border-right: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      overflow-y: auto;
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand__photo {
+      width: 8.5rem;
+      height: 8.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--bg-raised);
+      box-shadow: var(--shadow);
+      transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+    }
+    .brand:hover .brand__photo { transform: scale(1.03); box-shadow: var(--shadow-lift); }
+
+    .brand__name {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.015em;
+    }
+    .brand__role {
+      font-size: .82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .nav { display: flex; flex-direction: column; gap: .1rem; }
+
+    .nav__link {
+      position: relative;
+      display: block;
+      padding: .5rem .75rem;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 5px;
+      transition: color .2s var(--ease), background-color .2s var(--ease);
+    }
+    .nav__link::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 50%;
+      width: 2.5px; height: 0;
+      background: var(--accent);
+      border-radius: 2px;
+      transform: translateY(-50%);
+      transition: height .28s var(--ease);
+    }
+    .nav__link:hover { color: var(--text); background: color-mix(in srgb, var(--accent-wash) 55%, transparent); }
+    .nav__link.is-active { color: var(--accent); font-weight: 600; }
+    .nav__link.is-active::before { height: 1.25rem; }
+
+    .sidebar__foot { margin-top: auto; display: flex; flex-direction: column; gap: 1rem; }
+
+    .social { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .social a {
+      display: grid;
+      place-items: center;
+      width: 2.15rem; height: 2.15rem;
+      border: 1px solid var(--rule-strong);
+      border-radius: 6px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .2s var(--ease), border-color .2s var(--ease),
+                  background-color .2s var(--ease), transform .2s var(--ease);
+    }
+    .social a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-wash);
+      transform: translateY(-2px);
+    }
+    .social svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .45rem .7rem;
+      font: inherit;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid var(--rule-strong);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+    .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+    .theme-toggle svg { width: .95rem; height: .95rem; fill: currentColor; }
+    .theme-toggle .icon-dark { display: none; }
+    :root[data-theme="dark"] .theme-toggle .icon-dark { display: block; }
+    :root[data-theme="dark"] .theme-toggle .icon-light { display: none; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .theme-toggle .icon-dark { display: block; }
+      :root:not([data-theme="light"]) .theme-toggle .icon-light { display: none; }
+    }
+
+    /* ============================================================
+       Main layout
+       ============================================================ */
+    .main { margin-left: var(--sidebar-w); }
+
+    .section {
+      padding: clamp(3rem, 6vw, 5.5rem) clamp(1.5rem, 5vw, 5rem);
+      border-bottom: 1px solid var(--rule);
+      scroll-margin-top: 2rem;
+    }
+    .section:last-child { border-bottom: 0; }
+    .section__inner { max-width: 56rem; }
+
+    .section__label {
+      display: block;
+      font-family: var(--sans);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .85rem;
+    }
+
+    .section h2 {
+      font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.4rem);
+      margin-bottom: 1.75rem;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero { padding-top: clamp(3.5rem, 8vw, 7rem); }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 1.7rem + 4vw, 4.4rem);
+      font-weight: 700;
+      letter-spacing: -.028em;
+      margin-bottom: .6rem;
+    }
+    .hero h1 .surname { color: var(--accent); }
+
+    .hero__tagline {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 1rem + .85vw, 1.65rem);
+      line-height: 1.4;
+      color: var(--text);
+      max-width: 34ch;
+      margin: 0 0 1.5rem;
+      text-wrap: balance;
+    }
+
+    .hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .5rem 1.4rem;
+      font-size: .9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+    }
+    .hero__meta span { display: inline-flex; align-items: center; gap: .45rem; }
+    .hero__meta svg { width: .95rem; height: .95rem; fill: var(--text-faint); flex: none; }
+
+    .hero__bio { color: var(--text-muted); margin-bottom: 2rem; }
+    .hero__bio strong { color: var(--text); font-weight: 600; }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: .65rem; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .6rem 1.15rem;
+      font-size: .875rem;
+      font-weight: 600;
+      border-radius: 7px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform .2s var(--ease), box-shadow .2s var(--ease),
+                  background-color .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+    }
+    .btn svg { width: .95rem; height: .95rem; fill: currentColor; flex: none; }
+    .btn--primary { background: var(--accent); color: #fff; box-shadow: var(--shadow); }
+    .btn--primary:hover { background: var(--accent-hover); color: #fff; transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+    .btn--ghost { border-color: var(--rule-strong); color: var(--text); background: var(--bg-raised); }
+    .btn--ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+    /* ---------- Research themes ---------- */
+    .theme-block { margin-bottom: 2.75rem; }
+    .theme-block:last-child { margin-bottom: 0; }
+
+    .theme-block h3 {
+      font-size: 1.3rem;
+      margin-bottom: .3rem;
+      display: flex;
+      align-items: baseline;
+      gap: .6rem;
+    }
+    .theme-block h3::before {
+      content: "";
+      width: 1.6rem; height: 2px;
+      background: var(--accent);
+      flex: none;
+      transform: translateY(-.35em);
+    }
+    .theme-block p { color: var(--text-muted); }
+    .theme-block em { color: var(--text); font-style: normal; font-weight: 600; }
+
+    /* ---------- Publication cards ---------- */
+    .pub-list { list-style: none; margin: 0; padding: 0; }
+
+    .pub {
+      padding: 1.4rem;
+      margin: 0 -1.4rem .75rem;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: border-color .25s var(--ease), background-color .25s var(--ease),
+                  box-shadow .25s var(--ease);
+    }
+    .pub:hover {
+      border-color: var(--rule);
+      background: var(--bg-raised);
+      box-shadow: var(--shadow-lift);
+    }
+
+    /* Figures here are dense multi-panel diagrams, not result thumbnails:
+       show them full width, never crop, and let the reader open the original. */
+    .pub__figure {
+      display: block;
+      position: relative;
+      margin-top: 1.1rem;
+      min-height: 6rem;
+      border-radius: 7px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: var(--bg-sunken);
+      text-decoration: none;
+    }
+    .pub__figure img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      max-height: 24rem;
+      object-fit: contain;
+      /* Diagrams are drawn on white — keep that ground in both themes
+         so the letterboxing matches the artwork and stays legible. */
+      background: #fff;
+      transition: opacity .25s var(--ease);
+    }
+    .pub__figure:hover img { opacity: .93; }
+
+    /* Placeholder sits underneath; if the image 404s the onerror handler
+       removes it and flags the container, revealing this instead. */
+    .pub__figure::before {
+      content: attr(data-placeholder);
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: grid;
+      place-items: center;
+      padding: .5rem;
+      text-align: center;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      background:
+        repeating-linear-gradient(45deg,
+          transparent, transparent 7px,
+          color-mix(in srgb, var(--rule) 45%, transparent) 7px,
+          color-mix(in srgb, var(--rule) 45%, transparent) 14px);
+    }
+
+    .pub__figure::after {
+      content: "Open full size";
+      position: absolute;
+      right: .6rem; bottom: .6rem;
+      z-index: 2;
+      font-size: .7rem;
+      font-weight: 600;
+      padding: .28rem .6rem;
+      border-radius: 5px;
+      background: rgba(18, 20, 24, .82);
+      color: #fff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s var(--ease);
+    }
+    .pub__figure:hover::after,
+    .pub__figure:focus-visible::after { opacity: 1; }
+
+    .pub__figure.is-missing { pointer-events: none; }
+    .pub__figure.is-missing::after { display: none; }
+
+    .pub__venue {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-wash);
+      padding: .2rem .55rem;
+      border-radius: 4px;
+      margin-bottom: .5rem;
+    }
+
+    .pub__title {
+      font-size: 1.12rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: .4rem;
+    }
+    .pub__title a { color: inherit; text-decoration: none; }
+    .pub__title a:hover { color: var(--accent); }
+
+    .pub__authors {
+      font-size: .875rem;
+      color: var(--text-muted);
+      margin-bottom: .7rem;
+      line-height: 1.5;
+    }
+    .pub__authors b { color: var(--text); font-weight: 600; }
+
+    .pub__links { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .75rem;
+      font-weight: 500;
+      font-family: var(--sans);
+      padding: .25rem .6rem;
+      border: 1px solid var(--rule-strong);
+      border-radius: 5px;
+      color: var(--text-muted);
+      background: transparent;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color .18s var(--ease), border-color .18s var(--ease), background-color .18s var(--ease);
+    }
+    .tag:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-wash); }
+    .tag.is-copied { color: var(--accent); border-color: var(--accent); background: var(--accent-wash); }
+
+    /* Compact list for the full bibliography */
+    .pub-compact { list-style: none; margin: 0; padding: 0; }
+    .pub-compact li {
+      padding: .9rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: .5rem 1.5rem;
+      align-items: baseline;
+    }
+    .pub-compact li:last-child { border-bottom: 0; }
+    .pub-compact__title { font-weight: 500; line-height: 1.45; }
+    .pub-compact__title a { color: inherit; text-decoration: none; }
+    .pub-compact__title a:hover { color: var(--accent); text-decoration: underline; }
+    .pub-compact__authors { font-size: .84rem; color: var(--text-muted); margin-top: .2rem; }
+    .pub-compact__authors b { color: var(--text); font-weight: 600; }
+    .pub-compact__venue {
+      font-size: .8rem;
+      color: var(--text-faint);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .subhead {
+      font-family: var(--sans);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin: 2.5rem 0 .75rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--rule-strong);
+    }
+    .subhead:first-child { margin-top: 0; }
+
+    /* ---------- Timeline (experience + education) ---------- */
+    .timeline { list-style: none; margin: 0; padding: 0 0 0 1.6rem; position: relative; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: .3rem; top: .55rem; bottom: .55rem;
+      width: 1.5px;
+      background: var(--rule-strong);
+    }
+
+    .timeline li { position: relative; padding-bottom: 1.85rem; }
+    .timeline li:last-child { padding-bottom: 0; }
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: -1.6rem; top: .5rem;
+      width: .55rem; height: .55rem;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      transform: translateX(-.02rem);
+    }
+
+    .timeline__head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: .3rem 1.5rem;
+    }
+    .timeline__title { font-family: var(--serif); font-size: 1.12rem; font-weight: 600; }
+    .timeline__date {
+      font-size: .82rem;
+      color: var(--text-faint);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+    .timeline__meta { font-size: .89rem; color: var(--text-muted); margin-top: .15rem; }
+
+    /* ---------- News ---------- */
+    .news { list-style: none; margin: 0; padding: 0; }
+    .news li {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+      gap: 1rem;
+      padding: .8rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: .95rem;
+    }
+    .news li:last-child { border-bottom: 0; }
+    .news__date {
+      font-size: .8rem;
+      color: var(--text-faint);
+      font-variant-numeric: tabular-nums;
+      padding-top: .15rem;
+      white-space: nowrap;
+    }
+    .news__body { color: var(--text-muted); }
+    .news__body b { color: var(--text); font-weight: 600; }
+
+    .news li[hidden] { display: none; }
+
+    .more-btn {
+      margin-top: 1.25rem;
+      padding: .55rem 1.1rem;
+      font: inherit;
+      font-size: .85rem;
+      font-weight: 600;
+      font-family: var(--sans);
+      color: var(--accent);
+      background: transparent;
+      border: 1px solid var(--rule-strong);
+      border-radius: 7px;
+      cursor: pointer;
+      transition: border-color .2s var(--ease), background-color .2s var(--ease);
+    }
+    .more-btn:hover { border-color: var(--accent); background: var(--accent-wash); }
+
+    /* ---------- Media / talks ---------- */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      gap: 1rem;
+    }
+    .media-card {
+      display: block;
+      padding: 1.15rem 1.25rem;
+      border: 1px solid var(--rule);
+      border-radius: 9px;
+      background: var(--bg-raised);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease);
+    }
+    .media-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lift);
+      transform: translateY(-3px);
+      color: inherit;
+    }
+    .media-card__kind {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: .45rem;
+    }
+    .media-card__title { font-family: var(--serif); font-size: 1.02rem; font-weight: 600; line-height: 1.35; margin-bottom: .3rem; }
+    .media-card__meta { font-size: .82rem; color: var(--text-muted); }
+
+    /* ---------- Reviewing + interests ---------- */
+    .chip-list { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; }
+    .chip-list li {
+      font-size: .85rem;
+      padding: .35rem .75rem;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      background: var(--bg-raised);
+      color: var(--text-muted);
+      transition: border-color .2s var(--ease), color .2s var(--ease);
+    }
+    .chip-list li:hover { border-color: var(--accent); color: var(--accent); }
+    .chip-list a { color: inherit; text-decoration: none; }
+
+    .interests { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+    .interests li {
+      display: flex;
+      gap: .85rem;
+      align-items: flex-start;
+      color: var(--text-muted);
+    }
+    .interests svg { width: 1.1rem; height: 1.1rem; fill: var(--accent); flex: none; margin-top: .28rem; }
+
+    footer {
+      padding: 2.5rem clamp(1.5rem, 5vw, 5rem) 3.5rem;
+      font-size: .84rem;
+      color: var(--text-faint);
+    }
+    footer p { max-width: none; }
+
+    /* ============================================================
+       Scroll reveal
+       ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .55s var(--ease), transform .55s var(--ease);
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .reveal-child > * {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .5s var(--ease), transform .5s var(--ease);
+      transition-delay: calc(var(--i, 0) * 55ms);
+    }
+    .reveal-child.is-visible > * { opacity: 1; transform: none; }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 62rem) {
+      .sidebar {
+        position: sticky;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        padding: .75rem 1.25rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        border-right: 0;
+        border-bottom: 1px solid var(--rule);
+        backdrop-filter: blur(10px);
+        background: color-mix(in srgb, var(--bg-sunken) 88%, transparent);
+      }
+      .brand { flex-direction: row; align-items: center; gap: .7rem; flex: none; }
+      .brand__photo { width: 2.4rem; height: 2.4rem; border-width: 2px; }
+      .brand__name { font-size: 1rem; white-space: nowrap; }
+      .brand__role, .sidebar__foot { display: none; }
+      .nav { flex-direction: row; gap: .15rem; }
+      .nav__link { white-space: nowrap; padding: .4rem .6rem; font-size: .82rem; }
+      .nav__link::before { display: none; }
+      .nav__link.is-active { background: var(--accent-wash); }
+      .main { margin-left: 0; }
+      html { scroll-padding-top: 4.5rem; }
+    }
+
+    @media (max-width: 40rem) {
+      .pub__figure img { max-height: 15rem; }
+      .pub__figure::after { opacity: 1; }
+      .pub-compact li { grid-template-columns: 1fr; }
+      .news li { grid-template-columns: 1fr; gap: .2rem; }
+    }
+
+    /* ============================================================
+       Motion + print
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal, .reveal-child > * { opacity: 1 !important; transform: none !important; }
+    }
+
+    @media print {
+      :root {
+        --bg: #fff; --bg-raised: #fff; --bg-sunken: #fff;
+        --text: #000; --text-muted: #333; --text-faint: #555;
+        --accent: #000; --accent-wash: #fff;
+        --rule: #ccc; --rule-strong: #999;
+        --shadow: none; --shadow-lift: none;
+      }
+      .sidebar, .theme-toggle, .more-btn, .cta-row, .pub__figure { display: none !important; }
+      .main { margin-left: 0; }
+      .section { padding: 1rem 0; border-bottom: 1px solid #ccc; break-inside: avoid; }
+      .pub { padding: .5rem 0; margin: 0 0 .5rem; break-inside: avoid; }
+      .news li[hidden] { display: grid !important; }
+      .reveal, .reveal-child > * { opacity: 1 !important; transform: none !important; }
+      a { text-decoration: none; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .75em; color: #555; word-break: break-all; }
+      body { font-size: 10.5pt; }
+    }
+  </style>
+</head>
+
+<body id="page-top">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============================================================
+       Sidebar
+       ============================================================ -->
+  <aside class="sidebar">
+    <a class="brand" href="#page-top">
+      <img class="brand__photo" src="img/Picture.jpg" alt="Portrait of Rafi Ibn Sultan" width="136" height="136">
+      <span>
+        <span class="brand__name">Rafi Ibn Sultan</span>
+        <span class="brand__role">Ph.D. Candidate<br>Computer Vision &amp; Multimodal AI</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Section navigation">
+      <a class="nav__link" href="#about">About</a>
+      <a class="nav__link" href="#research">Research</a>
+      <a class="nav__link" href="#publications">Publications</a>
+      <a class="nav__link" href="#talks">Talks &amp; Media</a>
+      <a class="nav__link" href="#news">News</a>
+      <a class="nav__link" href="#experience">Experience</a>
+      <a class="nav__link" href="#education">Education</a>
+      <a class="nav__link" href="#beyond">Beyond Research</a>
+    </nav>
+
+    <div class="sidebar__foot">
+      <div class="social">
+        <a href="https://scholar.google.com/citations?hl=en&amp;user=d9YLRmEAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
+        </a>
+        <a href="https://github.com/rafiibnsultan" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 016 0C17.5 4.7 18.5 5 18.5 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/rafi-ibn-sultan/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3A2 2 0 0121 5v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        </a>
+        <a href="https://twitter.com/RafiIbnSultan1" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X (Twitter)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 1.2h3.7l-8.1 9.2 9.5 12.5h-7.4l-5.8-7.6-6.7 7.6H.4l8.6-9.9L0 1.2h7.6l5.2 6.9zm-1.3 19.5h2L6.5 3.2H4.4z"/></svg>
+        </a>
+        <a href="https://www.researchgate.net/profile/Rafi-Ibn-Sultan" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 0H4.4A4.4 4.4 0 000 4.4v15.2A4.4 4.4 0 004.4 24h15.2a4.4 4.4 0 004.4-4.4V4.4A4.4 4.4 0 0019.6 0M8.2 6.6c1.3 0 2.3.3 2.9 1 .6.6.9 1.5.9 2.6 0 1.2-.3 2.1-1 2.7-.4.4-.9.7-1.5.8l2.8 4.4H10l-2.5-4.1H6.4v4.1H4.6V6.6zm-1.8 1.5v4.4h1.6c.7 0 1.2-.2 1.6-.5.3-.4.5-.9.5-1.6 0-.8-.2-1.4-.5-1.7-.4-.4-.9-.6-1.7-.6zm10.9-1.7c1.4 0 2.5.5 3.1 1.4l-1.1.9c-.4-.6-1.1-.9-2-.9-1.6 0-2.6 1.2-2.6 3.3s1 3.4 2.6 3.4c1.3 0 2.1-.7 2.2-1.9v-.4h-2.1v-1.4h3.7v1.7c0 2.2-1.5 3.6-3.8 3.6-2.6 0-4.4-2-4.4-5s1.8-4.7 4.4-4.7"/></svg>
+        </a>
+        <a href="mailto:rafis@wayne.edu" aria-label="Email" title="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2m0 4l-8 5-8-5V6l8 5 8-5z"/></svg>
+        </a>
+      </div>
+
+      <button class="theme-toggle" type="button" id="themeToggle" aria-label="Toggle color theme">
+        <svg class="icon-light" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 100 10 5 5 0 000-10m0-5v3m0 14v3M4.2 4.2l2.1 2.1m11.4 11.4l2.1 2.1M2 12h3m14 0h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+        <svg class="icon-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.9 9.9 0 00-1.4.1 9 9 0 018.6 9 9 9 0 01-9 9c-.5 0-1 0-1.4-.1A10 10 0 1012 2z"/></svg>
+        <span>Theme</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Main
+       ============================================================ -->
+  <main class="main" id="main">
+
+    <!-- ---------- Hero / About ---------- -->
+    <section class="section hero" id="about">
+      <div class="section__inner reveal">
+        <h1>Rafi Ibn <span class="surname">Sultan</span></h1>
+
+        <p class="hero__tagline">I build vision–language systems that segment, ground, and reason about the world.</p>
+
+        <div class="hero__meta">
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
+            Ph.D. Candidate, Wayne State University
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7m0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+            Detroit, Michigan
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2m0 4l-8 5-8-5V6l8 5 8-5z"/></svg>
+            <a href="mailto:rafis@wayne.edu">rafis@wayne.edu</a>
+          </span>
+        </div>
+
+        <div class="hero__bio">
+          <p>I'm a Ph.D. candidate in Computer Science at Wayne State University, working at the intersection of
+            computer vision and multimodal AI. Since joining the <strong>Trustworthy AI Lab</strong> in 2022, I've
+            worked on vision–language models and segmentation foundation models across medical imaging, mobility
+            infrastructure, and remote sensing.</p>
+          <p>What I care about most is <strong>AI for social good</strong> — systems that don't just describe a scene,
+            but reason about it well enough to support real decisions.</p>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn--primary" href="https://waynestateprod-my.sharepoint.com/:b:/g/personal/hm4013_wayne_edu/IQB0Ou8BGvuvToSg6JZ5AWBtAV4U9fegFR7DFKZ5mTYutBw?e=twThp4" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8zm-1 7V3.5L18.5 9z"/></svg>
+            Curriculum Vitae
+          </a>
+          <a class="btn btn--ghost" href="https://scholar.google.com/citations?hl=en&amp;user=d9YLRmEAAAAJ" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>
+            Google Scholar
+          </a>
+          <a class="btn btn--ghost" href="https://github.com/rafiibnsultan" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 016 0C17.5 4.7 18.5 5 18.5 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Research ---------- -->
+    <section class="section" id="research">
+      <div class="section__inner reveal">
+        <span class="section__label">Research</span>
+        <h2>What I work on</h2>
+
+        <div class="theme-block">
+          <h3>Grounded Multimodal Reasoning for Accessibility</h3>
+          <p>My most recent work, <em>WalkGPT</em> (CVPR 2026), is a grounded vision–language model for pedestrian
+            navigation and accessibility. It combines segmentation, depth estimation, and language reasoning to
+            identify sidewalks, crosswalks, curb ramps, and accessibility barriers from real-world pedestrian-view
+            imagery, then delivers step-by-step, context-aware guidance as a conversational agent.</p>
+          <p>Earlier in this line, <em>GeoSAM</em> (ECAI 2025) introduced sparse- and dense-prompt fine-tuning of SAM
+            for large-scale mobility-infrastructure segmentation from aerial and street-level imagery. It has since
+            been adopted as a benchmark in subsequent NeurIPS work.</p>
+          <p>I'm currently extending this toward stronger spatial reasoning in vision–language models at scale —
+            pushing past surface-level description toward reliable spatial and logical inference across complex scenes.</p>
+        </div>
+
+        <div class="theme-block">
+          <h3>Medical Image Segmentation &amp; Multimodal Learning</h3>
+          <p>I develop foundation-model-based segmentation and VLM-driven fusion methods for CT and MRI analysis.
+            My current work in this line, <em>MedPlex</em>, explores deep vision–language co-adaptation for clinically
+            grounded medical segmentation — building on <em>BiPVL-Seg</em>, which introduced bidirectional progressive
+            alignment of visual features with structured medical text to improve organ and tumor segmentation.</p>
+          <p>With <strong>Henry Ford Hospital</strong>, I work on Left Anterior Descending (LAD) artery segmentation
+            using novel encoder–decoder architectures — important for radiotherapy planning, since the LAD is highly
+            sensitive to radiation injury. That work was presented at AAPM 2025 and is forthcoming in
+            <em>Medical Physics</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Publications ---------- -->
+    <section class="section" id="publications">
+      <div class="section__inner reveal">
+        <span class="section__label">Publications</span>
+        <h2>Selected work</h2>
+
+        <ul class="pub-list">
+          <li class="pub">
+            <span class="pub__venue">CVPR 2026</span>
+            <div class="pub__title">WalkGPT: Grounded Vision–Language Conversation with Depth-Aware Segmentation for Pedestrian Navigation</div>
+            <div class="pub__authors"><b>Rafi Ibn Sultan</b>, Hui Zhu, Xiangyu Zhou, Chengyin Li, Prashant Khanduri, Marco Brocanelli, Dongxiao Zhu</div>
+            <div class="pub__links">
+              <button class="tag" data-bibtex="walkgpt">BibTeX</button>
+            </div>
+            <a class="pub__figure" href="img/papers/walkgpt.jpg" target="_blank" rel="noopener"
+               data-placeholder="Add walkgpt.jpg" aria-label="Open the full-size WalkGPT figure">
+              <img src="img/papers/walkgpt.jpg" loading="lazy"
+                   onerror="var f=this.parentNode; f.classList.add('is-missing'); this.remove();"
+                   alt="WalkGPT framework: a SAM pixel encoder and decoder feed a large language model with LoRA, producing a segmentation mask and a natural-language accessibility assessment. Side panels detail the Multi-Scale Query Projector and the Calibrated Text Projector with region alignment loss.">
+            </a>
+          </li>
+
+          <li class="pub">
+            <span class="pub__venue">ECAI 2025</span>
+            <div class="pub__title">
+              <a href="https://arxiv.org/abs/2311.11319" target="_blank" rel="noopener">GeoSAM: Fine-tuning SAM with Multi-Modal Prompts for Mobility Infrastructure Segmentation</a>
+            </div>
+            <div class="pub__authors"><b>Rafi Ibn Sultan</b>, Chengyin Li, Hui Zhu, Prashant Khanduri, Marco Brocanelli, Dongxiao Zhu</div>
+            <div class="pub__links">
+              <a class="tag" href="https://arxiv.org/abs/2311.11319" target="_blank" rel="noopener">arXiv</a>
+              <button class="tag" data-bibtex="geosam">BibTeX</button>
+            </div>
+            <a class="pub__figure" href="img/papers/geosam.jpg" target="_blank" rel="noopener"
+               data-placeholder="Add geosam.jpg" aria-label="Open the full-size GeoSAM figure">
+              <img src="img/papers/geosam.jpg" loading="lazy"
+                   onerror="var f=this.parentNode; f.classList.add('is-missing'); this.remove();"
+                   alt="GeoSAM pipeline: aerial imagery plus GPT-4 text prompts drive a frozen image encoder and prompt encoder into a tuned mask decoder that predicts infrastructure masks. A second panel shows geo-point generation, extracting foreground and background points from pseudo labels for road and pedestrian infrastructure.">
+            </a>
+          </li>
+
+          <li class="pub">
+            <span class="pub__venue">Medical Physics 2026</span>
+            <div class="pub__title">NA-UNETR: A Neighborhood Attention Transformer Network for Enhanced 3D Segmentation of the Left Anterior Descending Artery</div>
+            <div class="pub__authors"><b>Rafi Ibn Sultan</b>, et al. — in collaboration with Henry Ford Hospital</div>
+            <div class="pub__links">
+              <button class="tag" data-bibtex="naunetr">BibTeX</button>
+            </div>
+            <a class="pub__figure" href="img/papers/na-unetr.jpg" target="_blank" rel="noopener"
+               data-placeholder="Add na-unetr.jpg" aria-label="Open the full-size NA-UNETR figure">
+              <img src="img/papers/na-unetr.jpg" loading="lazy"
+                   onerror="var f=this.parentNode; f.classList.add('is-missing'); this.remove();"
+                   alt="NA-UNETR architecture for 3D segmentation of the left anterior descending artery.">
+            </a>
+          </li>
+
+          <li class="pub">
+            <span class="pub__venue">Under Review</span>
+            <div class="pub__title">MedPlex: Deep Vision-Language Co-Adaptation for Clinically Grounded Medical Segmentation</div>
+            <div class="pub__authors"><b>Rafi Ibn Sultan</b>, et al.</div>
+            <div class="pub__links">
+              <button class="tag" data-bibtex="medplex">BibTeX</button>
+            </div>
+            <a class="pub__figure" href="img/papers/medplex.jpg" target="_blank" rel="noopener"
+               data-placeholder="Add medplex.jpg" aria-label="Open the full-size MedPlex figure">
+              <img src="img/papers/medplex.jpg" loading="lazy"
+                   onerror="var f=this.parentNode; f.classList.add('is-missing'); this.remove();"
+                   alt="MedPlex training framework: a vision encoder and decoder alongside a text encoder, joined by bidirectional fusion blocks, aligning visual and text embedding spaces through class-level and region-level concept-grounded contrastive losses against a segmentation map and ground truth.">
+            </a>
+          </li>
+        </ul>
+
+        <h3 class="subhead">All Peer-Reviewed Publications</h3>
+        <ul class="pub-compact">
+          <li>
+            <div>
+              <div class="pub-compact__title">WalkGPT: Grounded Vision–Language Conversation with Depth-Aware Segmentation for Pedestrian Navigation</div>
+              <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, Hui Zhu, Xiangyu Zhou, Chengyin Li, Prashant Khanduri, Marco Brocanelli, Dongxiao Zhu</div>
+            </div>
+            <div class="pub-compact__venue">CVPR · 2026</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">NA-UNETR: A Neighborhood Attention Transformer Network for Enhanced 3D Segmentation of the Left Anterior Descending Artery</div>
+              <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, et al.</div>
+            </div>
+            <div class="pub-compact__venue">Medical Physics · 2026</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">
+                <a href="https://arxiv.org/abs/2311.11319" target="_blank" rel="noopener">GeoSAM: Fine-tuning SAM with Multi-Modal Prompts for Mobility Infrastructure Segmentation</a>
+              </div>
+              <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, Chengyin Li, Hui Zhu, Prashant Khanduri, Marco Brocanelli, Dongxiao Zhu</div>
+            </div>
+            <div class="pub-compact__venue">ECAI · 2025</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">Enhancing CT Image Segmentation Accuracy Through Ensemble Loss Function Optimization</div>
+              <div class="pub-compact__authors">Chengyin Li, Prashant Khanduri, Yao Qiang, <b>Rafi Ibn Sultan</b>, Indrin Chetty, Dongxiao Zhu</div>
+            </div>
+            <div class="pub-compact__venue">Medical Physics · 2025</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">AutoProSAM: Automated Prompting SAM for 3D Multi-Organ Segmentation</div>
+              <div class="pub-compact__authors">Chengyin Li, Hui Zhu, <b>Rafi Ibn Sultan</b>, Dongxiao Zhu</div>
+            </div>
+            <div class="pub-compact__venue">WACV · 2025</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">MulModSeg: Enhancing Unpaired Multi-Modal Medical Image Segmentation with Modality-Conditioned Text Embedding</div>
+              <div class="pub-compact__authors">Chengyin Li, Hui Zhu, <b>Rafi Ibn Sultan</b>, Dongxiao Zhu</div>
+            </div>
+            <div class="pub-compact__venue">WACV · 2025</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">
+                <a href="https://aapm.onlinelibrary.wiley.com/doi/epdf/10.1002/mp.16750" target="_blank" rel="noopener">A New Architecture Combining Convolutional and Transformer-Based Networks for Automatic 3D Segmentation of Pelvic Anatomy</a>
+              </div>
+              <div class="pub-compact__authors">Chengyin Li, Hassan Bagher-Ebadian, <b>Rafi Ibn Sultan</b>, Dongxiao Zhu, Indrin Chetty</div>
+            </div>
+            <div class="pub-compact__venue">Medical Physics · 2023</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-43898-1_57" target="_blank" rel="noopener">FocalUNETR: A Focal Transformer for Boundary-Aware Prostate Segmentation Using CT Images</a>
+              </div>
+              <div class="pub-compact__authors">Chengyin Li, Yao Qiang, <b>Rafi Ibn Sultan</b>, Hassan Bagher-Ebadian, Prashant Khanduri, Indrin J. Chetty, Dongxiao Zhu</div>
+            </div>
+            <div class="pub-compact__venue">MICCAI · 2023</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">
+                <a href="https://ieeexplore.ieee.org/document/9836589" target="_blank" rel="noopener">An Enhanced Method for Encrypting Image and Text Data Using AES and LSB Steganography</a>
+              </div>
+              <div class="pub-compact__authors">Md. Simul Hasan Talukder, Md. Nahid Hasan, <b>Rafi Ibn Sultan</b>, Ajay Krishno Sarkar, Mahabubur Rahman</div>
+            </div>
+            <div class="pub-compact__venue">ICAEEE · 2022</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">
+                <a href="https://ieeexplore.ieee.org/abstract/document/9667794" target="_blank" rel="noopener">Recognition of Basic Handwritten Math Symbols Using CNN with Data Augmentation</a>
+              </div>
+              <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, Md. Nahid Hasan, Mohammad Kasedullah</div>
+            </div>
+            <div class="pub-compact__venue">ICEEICT · 2021</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">
+                <a href="https://ieeexplore.ieee.org/document/9431799" target="_blank" rel="noopener">Automated Recognition of Isolated Handwritten Bangla Characters Using Deep CNN</a>
+              </div>
+              <div class="pub-compact__authors">Md. Nahid Hasan, <b>Rafi Ibn Sultan</b>, Mohammad Kasedullah</div>
+            </div>
+            <div class="pub-compact__venue">ISCAIE · 2021</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">
+                <a href="https://ieeexplore.ieee.org/document/8650376" target="_blank" rel="noopener">Automatic Detection of Invasive Ductal Carcinoma Using Convolutional Neural Networks</a>
+              </div>
+              <div class="pub-compact__authors">Md. Jamil-Ur Rahman, <b>Rafi Ibn Sultan</b>, Firoz Mahmud, Sazid Al Ahsan, Abdul Matin</div>
+            </div>
+            <div class="pub-compact__venue">TENCON · 2018</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">
+                <a href="https://ieeexplore.ieee.org/document/8628152" target="_blank" rel="noopener">Ensemble of Multiple Models for Intelligent Heart Disease Prediction</a>
+              </div>
+              <div class="pub-compact__authors">Md. Jamil-Ur Rahman, <b>Rafi Ibn Sultan</b>, Firoz Mahmud, Ashadullah Shawon, Afsana Khan</div>
+            </div>
+            <div class="pub-compact__venue">ICEEICT · 2018</div>
+          </li>
+        </ul>
+
+        <h3 class="subhead">Preprints &amp; Under Review</h3>
+        <ul class="pub-compact">
+          <li>
+            <div>
+              <div class="pub-compact__title">MedPlex: Deep Vision-Language Co-Adaptation for Clinically Grounded Medical Segmentation</div>
+              <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, et al.</div>
+            </div>
+            <div class="pub-compact__venue">Under review · 2026</div>
+          </li>
+          <li>
+            <div>
+              <div class="pub-compact__title">
+                <a href="https://arxiv.org/abs/2503.23534" target="_blank" rel="noopener">BiPVL-Seg: Bidirectional Progressive Vision-Language Fusion for Medical Image Segmentation</a>
+              </div>
+              <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, et al.</div>
+            </div>
+            <div class="pub-compact__venue">arXiv:2503.23534 · 2025</div>
+          </li>
+        </ul>
+
+        <p style="margin-top:2rem; font-size:.9rem; color:var(--text-muted);">
+          Full list on <a href="https://scholar.google.com/citations?hl=en&amp;user=d9YLRmEAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ---------- Talks & Media ---------- -->
+    <section class="section" id="talks">
+      <div class="section__inner reveal">
+        <span class="section__label">Talks &amp; Media</span>
+        <h2>Selected talks, coverage &amp; service</h2>
+
+        <div class="media-grid reveal-child">
+          <a class="media-card" href="https://www.pbs.org/video/wayne-state-university-creates-ai-for-mobility-project-criquh/" target="_blank" rel="noopener" style="--i:0">
+            <span class="media-card__kind">Press</span>
+            <div class="media-card__title">Detroit PBS: Wayne State Creates AI for Mobility Project</div>
+            <div class="media-card__meta">Feature on our lab and GeoSAM · April 2024</div>
+          </a>
+
+          <a class="media-card" href="https://youtu.be/I37hSEy7fXs" target="_blank" rel="noopener" style="--i:1">
+            <span class="media-card__kind">Conference Talk</span>
+            <div class="media-card__title">AutoProSAM presentation at WACV 2025</div>
+            <div class="media-card__meta">Tucson, Arizona · February 2025</div>
+          </a>
+
+          <div class="media-card" style="--i:2">
+            <span class="media-card__kind">Invited Talk</span>
+            <div class="media-card__title">From Mobility Infrastructure Segmentation to Pedestrian Guidance: A Multimodal AI Perspective</div>
+            <div class="media-card__meta">Guest graduate speaker, Computer Science Department, Wayne State University · January 2026</div>
+          </div>
+
+          <div class="media-card" style="--i:3">
+            <span class="media-card__kind">Service</span>
+            <div class="media-card__title">Program Committee, IJCAI 2026</div>
+            <div class="media-card__meta">International Joint Conference on Artificial Intelligence</div>
+          </div>
+        </div>
+
+        <h3 class="subhead">Journal &amp; Conference Reviewing</h3>
+        <ul class="chip-list">
+          <li><a href="https://www.sciencedirect.com/journal/pattern-recognition" target="_blank" rel="noopener">Pattern Recognition</a></li>
+          <li><a href="https://www.sciencedirect.com/journal/knowledge-based-systems" target="_blank" rel="noopener">Knowledge-Based Systems</a></li>
+          <li><a href="https://www.sciencedirect.com/journal/computer-methods-and-programs-in-biomedicine" target="_blank" rel="noopener">Computer Methods and Programs in Biomedicine</a></li>
+          <li><a href="https://www.sciencedirect.com/journal/biomedical-signal-processing-and-control" target="_blank" rel="noopener">Biomedical Signal Processing and Control</a></li>
+          <li><a href="https://www.sciencedirect.com/journal/computer-vision-and-image-understanding" target="_blank" rel="noopener">Computer Vision and Image Understanding</a></li>
+          <li><a href="https://www.sciencedirect.com/journal/expert-systems-with-applications" target="_blank" rel="noopener">Expert Systems with Applications</a></li>
+          <li>IEEE Transactions on Medical Imaging</li>
+          <li>ECCV</li>
+          <li>NeurIPS</li>
+          <li><a href="https://2025.ijcnn.org/" target="_blank" rel="noopener">IJCNN 2025</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ---------- News ---------- -->
+    <section class="section" id="news">
+      <div class="section__inner reveal">
+        <span class="section__label">News</span>
+        <h2>Recent updates</h2>
+
+        <ul class="news" id="newsList">
+          <li>
+            <span class="news__date">Aug 4, 2026</span>
+            <span class="news__body">Our paper with Henry Ford Hospital, <b>"A Neighborhood Attention Transformer Network for Enhanced 3D Segmentation of the Left Anterior Descending Artery,"</b> has been accepted to <i>Medical Physics</i>.</span>
+          </li>
+          <li>
+            <span class="news__date">Feb 20, 2026</span>
+            <span class="news__body"><b>WalkGPT</b> has been accepted to <b>CVPR 2026</b>.</span>
+          </li>
+          <li>
+            <span class="news__date">Feb 6, 2026</span>
+            <span class="news__body">I will serve on the Program Committee for <b>IJCAI 2026</b>.</span>
+          </li>
+          <li>
+            <span class="news__date">Jan 27, 2026</span>
+            <span class="news__body">I was invited as a guest graduate speaker in the Computer Science Department at Wayne State University, presenting <i>"From Mobility Infrastructure Segmentation to Pedestrian Guidance: A Multimodal AI Perspective."</i></span>
+          </li>
+          <li>
+            <span class="news__date">Jul 11, 2025</span>
+            <span class="news__body"><b>GeoSAM</b> has been accepted to the 28th European Conference on Artificial Intelligence (<b>ECAI 2025</b>) in Bologna, Italy.</span>
+          </li>
+          <li hidden>
+            <span class="news__date">May 16, 2025</span>
+            <span class="news__body">Invited to review for <i>Pattern Recognition</i> — a third invitation from a Q1 journal, following <i>Biomedical Signal Processing and Control</i> and <i>Computer Vision and Image Understanding</i>.</span>
+          </li>
+          <li hidden>
+            <span class="news__date">Apr 25, 2025</span>
+            <span class="news__body">Our work <b>NA-UNETR</b> was presented as a poster at <b>AAPM 2025</b>.</span>
+          </li>
+          <li hidden>
+            <span class="news__date">Apr 1, 2025</span>
+            <span class="news__body"><b>BiPVL-Seg</b>, our multimodal segmentation model, is now on <a href="https://arxiv.org/abs/2503.23534" target="_blank" rel="noopener">arXiv</a>.</span>
+          </li>
+          <li hidden>
+            <span class="news__date">Feb 27, 2025</span>
+            <span class="news__body">Attended and presented <b>AutoProSAM</b> at <b>WACV 2025</b>. <a href="https://youtu.be/I37hSEy7fXs" target="_blank" rel="noopener">Watch the presentation</a>.</span>
+          </li>
+          <li hidden>
+            <span class="news__date">Feb 11, 2025</span>
+            <span class="news__body">Invited to serve as a reviewer for <b>IJCNN 2025</b>.</span>
+          </li>
+          <li hidden>
+            <span class="news__date">Oct 28, 2024</span>
+            <span class="news__body">Two of our papers were accepted to <b>WACV 2025</b>.</span>
+          </li>
+          <li hidden>
+            <span class="news__date">Apr 3, 2024</span>
+            <span class="news__body">Our lab and GeoSAM were featured on <b>Detroit PBS</b>. <a href="https://www.pbs.org/video/wayne-state-university-creates-ai-for-mobility-project-criquh/" target="_blank" rel="noopener">Watch the segment</a>.</span>
+          </li>
+          <li hidden>
+            <span class="news__date">Mar 7, 2024</span>
+            <span class="news__body">I passed my PhD qualifying exam and am now a <b>PhD Candidate</b>. <a href="Qual_Rafi.pdf" target="_blank" rel="noopener">Read the report</a>.</span>
+          </li>
+        </ul>
+
+        <button class="more-btn" type="button" id="newsToggle" aria-expanded="false" aria-controls="newsList">
+          Show all updates
+        </button>
+      </div>
+    </section>
+
+    <!-- ---------- Experience ---------- -->
+    <section class="section" id="experience">
+      <div class="section__inner reveal">
+        <span class="section__label">Experience</span>
+        <h2>Where I've worked</h2>
+
+        <ul class="timeline">
+          <li>
+            <div class="timeline__head">
+              <span class="timeline__title">Graduate Research Assistant</span>
+              <span class="timeline__date">May 2022 — Present</span>
+            </div>
+            <div class="timeline__meta">
+              <a href="https://sites.google.com/view/mlpa/mainpage/members?authuser=0" target="_blank" rel="noopener">Trustworthy AI Lab</a>,
+              Department of Computer Science, Wayne State University · Detroit, MI
+            </div>
+          </li>
+          <li>
+            <div class="timeline__head">
+              <span class="timeline__title">Graduate Teaching Assistant</span>
+              <span class="timeline__date">Aug 2022 — May 2023</span>
+            </div>
+            <div class="timeline__meta">Department of Computer Science, Wayne State University · Detroit, MI</div>
+          </li>
+          <li>
+            <div class="timeline__head">
+              <span class="timeline__title">Lecturer</span>
+              <span class="timeline__date">Oct 2019 — Aug 2022</span>
+            </div>
+            <div class="timeline__meta">Department of Computer Science and Engineering, Varendra University · Rajshahi, Bangladesh</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ---------- Education ---------- -->
+    <section class="section" id="education">
+      <div class="section__inner reveal">
+        <span class="section__label">Education</span>
+        <h2>Education</h2>
+
+        <ul class="timeline">
+          <li>
+            <div class="timeline__head">
+              <span class="timeline__title">Ph.D. in Computer Science</span>
+              <span class="timeline__date">Sep 2022 — Present</span>
+            </div>
+            <div class="timeline__meta">Wayne State University · Detroit, MI</div>
+          </li>
+          <li>
+            <div class="timeline__head">
+              <span class="timeline__title">B.Sc. in Computer Science &amp; Engineering</span>
+              <span class="timeline__date">2014 — 2018</span>
+            </div>
+            <div class="timeline__meta">Rajshahi University of Engineering &amp; Technology (RUET) · Rajshahi, Bangladesh</div>
+          </li>
+          <li>
+            <div class="timeline__head">
+              <span class="timeline__title">Higher Secondary School Certificate</span>
+              <span class="timeline__date">2013</span>
+            </div>
+            <div class="timeline__meta">Rajshahi College</div>
+          </li>
+          <li>
+            <div class="timeline__head">
+              <span class="timeline__title">Secondary School Certificate</span>
+              <span class="timeline__date">2011</span>
+            </div>
+            <div class="timeline__meta">Shiroil Government High School</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ---------- Beyond Research ---------- -->
+    <section class="section" id="beyond">
+      <div class="section__inner reveal">
+        <span class="section__label">Beyond Research</span>
+        <h2>Outside the lab</h2>
+
+        <ul class="interests reveal-child">
+          <li style="--i:0">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20m0 2c1.5 0 2.9.4 4.1 1.1l-1.6 2.4-4.9-1.6-.5-2.6A8 8 0 0112 4M6.3 6.4l2.3 1.2.9 5-4.2 3-2.1-1.3A8 8 0 016.3 6.4m11.4 0a8 8 0 013.1 7.9l-2.1 1.3-4.2-3 .9-5zM9.5 19.7l-1-2.5 2.6-3h1.8l2.6 3-1 2.5a8 8 0 01-5 0"/></svg>
+            <span>Soccer — a loyal Real Madrid fan</span>
+          </li>
+          <li style="--i:1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3z"/></svg>
+            <span>Beginner acoustic guitarist</span>
+          </li>
+          <li style="--i:2">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 6h9a5.5 5.5 0 015.5 5.5v1A5.5 5.5 0 0116.5 18c-1.5 0-2.3-.6-3.2-1.5h-2.6C9.8 17.4 9 18 7.5 18A5.5 5.5 0 012 12.5v-1A5.5 5.5 0 017.5 6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm10 1a1 1 0 100 2 1 1 0 000-2m2 3a1 1 0 100 2 1 1 0 000-2"/></svg>
+            <span>Gaming — FIFA since '98, a Killjoy main in Valorant, and new to CS2</span>
+          </li>
+          <li style="--i:3">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7m0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+            <span>Travel — working toward all 50 states</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year">2026</span> Rafi Ibn Sultan · Built with plain HTML and CSS.</p>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* ---------- Theme toggle ---------- */
+      var root = document.documentElement;
+      var toggle = document.getElementById("themeToggle");
+
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved);
+      } catch (e) { /* storage blocked — fall back to system preference */ }
+
+      toggle.addEventListener("click", function () {
+        var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var current = root.getAttribute("data-theme") || (systemDark ? "dark" : "light");
+        var next = current === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+      });
+
+      /* ---------- Scroll reveal ---------- */
+      var revealables = document.querySelectorAll(".reveal, .reveal-child");
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealables.forEach(function (el) { el.classList.add("is-visible"); });
+      } else {
+        var revealObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+
+        revealables.forEach(function (el) { revealObserver.observe(el); });
+      }
+
+      /* ---------- Scroll spy ---------- */
+      var links = Array.prototype.slice.call(document.querySelectorAll(".nav__link"));
+      var sections = links
+        .map(function (link) { return document.querySelector(link.getAttribute("href")); })
+        .filter(Boolean);
+
+      function setActive(id) {
+        links.forEach(function (link) {
+          link.classList.toggle("is-active", link.getAttribute("href") === "#" + id);
+        });
+      }
+
+      if ("IntersectionObserver" in window && sections.length) {
+        var visible = new Map();
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) visible.set(entry.target.id, entry.intersectionRatio);
+            else visible.delete(entry.target.id);
+          });
+          if (!visible.size) return;
+          var best = null, bestRatio = -1;
+          visible.forEach(function (ratio, id) {
+            if (ratio > bestRatio) { bestRatio = ratio; best = id; }
+          });
+          if (best) setActive(best);
+        }, { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.15, 0.4, 0.75] });
+
+        sections.forEach(function (section) { spy.observe(section); });
+      }
+
+      /* ---------- News show/hide ---------- */
+      var newsToggle = document.getElementById("newsToggle");
+      var hiddenNews = Array.prototype.slice.call(
+        document.querySelectorAll("#newsList li[hidden]")
+      );
+
+      newsToggle.addEventListener("click", function () {
+        var expanded = newsToggle.getAttribute("aria-expanded") === "true";
+        hiddenNews.forEach(function (li) { li.hidden = expanded; });
+        newsToggle.setAttribute("aria-expanded", String(!expanded));
+        newsToggle.textContent = expanded ? "Show all updates" : "Show fewer updates";
+      });
+
+      /* ---------- BibTeX copy ---------- */
+      var bibtex = {
+        walkgpt: '@inproceedings{sultan2026walkgpt,\n  title     = {WalkGPT: Grounded Vision-Language Conversation with Depth-Aware Segmentation for Pedestrian Navigation},\n  author    = {Sultan, Rafi Ibn and Zhu, Hui and Zhou, Xiangyu and Li, Chengyin and Khanduri, Prashant and Brocanelli, Marco and Zhu, Dongxiao},\n  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},\n  year      = {2026}\n}',
+        geosam: '@inproceedings{sultan2025geosam,\n  title     = {GeoSAM: Fine-tuning SAM with Multi-Modal Prompts for Mobility Infrastructure Segmentation},\n  author    = {Sultan, Rafi Ibn and Li, Chengyin and Zhu, Hui and Khanduri, Prashant and Brocanelli, Marco and Zhu, Dongxiao},\n  booktitle = {European Conference on Artificial Intelligence (ECAI)},\n  year      = {2025}\n}',
+        naunetr: '@article{sultan2026naunetr,\n  title   = {NA-UNETR: A Neighborhood Attention Transformer Network for Enhanced 3D Segmentation of the Left Anterior Descending Artery},\n  author  = {Sultan, Rafi Ibn and others},\n  journal = {Medical Physics},\n  year    = {2026}\n}',
+        medplex: '@unpublished{sultan2026medplex,\n  title  = {MedPlex: Deep Vision-Language Co-Adaptation for Clinically Grounded Medical Segmentation},\n  author = {Sultan, Rafi Ibn and others},\n  note   = {Under review},\n  year   = {2026}\n}',
+        bipvl: '@article{sultan2025bipvl,\n  title   = {BiPVL-Seg: Bidirectional Progressive Vision-Language Fusion for Medical Image Segmentation},\n  author  = {Sultan, Rafi Ibn and others},\n  journal = {arXiv preprint arXiv:2503.23534},\n  year    = {2025}\n}'
+      };
+
+      document.querySelectorAll("[data-bibtex]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var entry = bibtex[btn.getAttribute("data-bibtex")];
+          if (!entry) return;
+
+          var done = function () {
+            var original = btn.textContent;
+            btn.textContent = "Copied";
+            btn.classList.add("is-copied");
+            setTimeout(function () {
+              btn.textContent = original;
+              btn.classList.remove("is-copied");
+            }, 1600);
+          };
+
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(entry).then(done).catch(function () {});
+          } else {
+            var ta = document.createElement("textarea");
+            ta.value = entry;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand("copy"); done(); } catch (e) {}
+            document.body.removeChild(ta);
+          }
+        });
+      });
+
+      /* ---------- Footer year ---------- */
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
