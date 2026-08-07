@@ -336,7 +336,11 @@
       scroll-margin-top: 2rem;
     }
     .section:last-child { border-bottom: 0; }
-    .section__inner { max-width: 56rem; }
+    /* Wider container gives the grids/lists room; paragraphs stay capped at
+       --measure independently, so body text never gets harder to read.
+       margin-inline:auto only bites once there is excess space, so narrow
+       viewports are unaffected. */
+    .section__inner { max-width: 64rem; margin-inline: auto; }
 
     .section__label {
       display: block;
