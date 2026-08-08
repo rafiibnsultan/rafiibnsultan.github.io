@@ -418,6 +418,68 @@
 
     .cta-row { display: flex; flex-wrap: wrap; gap: .65rem; }
 
+    /* Scholar stats. Hardcoded on purpose: Scholar has no API, blocks
+       cross-origin fetches, and bans scrapers — so these are updated by
+       hand and stamped with the date they were read. */
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      margin-top: 2.5rem;
+      text-decoration: none;
+      width: fit-content;
+    }
+    .stat {
+      display: grid;
+      place-content: center;
+      width: 6.6rem;
+      height: 6.6rem;
+      border-radius: 50%;
+      border: 1.5px solid var(--rule-strong);
+      text-align: center;
+      background: var(--bg-raised);
+      transition: border-color .25s var(--ease), transform .25s var(--ease),
+                  box-shadow .25s var(--ease), background-color .25s var(--ease);
+    }
+    .stats:hover .stat {
+      border-color: var(--accent);
+      background: var(--accent-wash);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .stats:hover .stat:nth-child(2) { transition-delay: .05s; }
+    .stats:hover .stat:nth-child(3) { transition-delay: .1s; }
+
+    .stat__num {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+    }
+    .stat__label {
+      display: block;
+      margin-top: .35rem;
+      font-size: .66rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .stats__note {
+      margin-top: .85rem;
+      font-size: .78rem;
+      color: var(--text-faint);
+    }
+    .stats__note a { color: var(--text-muted); }
+
+    @media (max-width: 26rem) {
+      .stat { width: 5.4rem; height: 5.4rem; }
+      .stat__num { font-size: 1.35rem; }
+      .stat__label { font-size: .6rem; }
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -1095,6 +1157,26 @@
             GitHub
           </a>
         </div>
+
+        <a class="stats" href="https://scholar.google.com/citations?hl=en&amp;user=d9YLRmEAAAAJ"
+           target="_blank" rel="noopener"
+           aria-label="Google Scholar profile: 285 citations, h-index 8, i10-index 8">
+          <span class="stat">
+            <span class="stat__num">285</span>
+            <span class="stat__label">Citations</span>
+          </span>
+          <span class="stat">
+            <span class="stat__num">8</span>
+            <span class="stat__label">h-index</span>
+          </span>
+          <span class="stat">
+            <span class="stat__num">8</span>
+            <span class="stat__label">i10-index</span>
+          </span>
+        </a>
+        <p class="stats__note">
+          Per <a href="https://scholar.google.com/citations?hl=en&amp;user=d9YLRmEAAAAJ" target="_blank" rel="noopener">Google Scholar</a>, August 2026.
+        </p>
       </div>
     </section>
 
