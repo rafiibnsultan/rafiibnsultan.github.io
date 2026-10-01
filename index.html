@@ -609,8 +609,16 @@
     .pub__figure.is-missing::after { display: none; }
 
     /* Same figure treatment, used inline inside the Research prose so each
-       architecture sits directly under the paragraph that explains it. */
+       architecture sits directly under the paragraph that explains it.
+       These are the flagship diagrams, so let width drive and drop the
+       height cap — with a cap, `contain` letterboxed them to ~55% of the
+       column and the panel labels became unreadable. */
     .research-figure { margin-bottom: 1.9rem; }
+    .research-figure img {
+      max-height: none;
+      width: 100%;
+      height: auto;
+    }
 
     .pub__venue {
       display: inline-block;
@@ -1009,6 +1017,9 @@
 
     @media (max-width: 40rem) {
       .pub__figure img { max-height: 15rem; }
+      /* Comes after the base rule, so restate it or the research figures
+         get letterboxed again on small screens. */
+      .research-figure img { max-height: none; }
       .pub__figure::after { opacity: 1; }
       .pub-compact li { grid-template-columns: 1fr; }
       .news li { grid-template-columns: 1fr; gap: .2rem; }
@@ -1175,9 +1186,9 @@
              ==================================================================== -->
         <a class="stats" href="https://scholar.google.com/citations?hl=en&amp;user=d9YLRmEAAAAJ"
            target="_blank" rel="noopener"
-           aria-label="Google Scholar profile: 310 citations, h-index 8, i10-index 8">
+           aria-label="Google Scholar profile: 312 citations, h-index 8, i10-index 8">
           <span class="stat">
-            <span class="stat__num">310</span>
+            <span class="stat__num">312</span>
             <span class="stat__label">Citations</span>
           </span>
           <span class="stat">
