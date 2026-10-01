@@ -608,6 +608,10 @@
     .pub__figure.is-missing { pointer-events: none; }
     .pub__figure.is-missing::after { display: none; }
 
+    /* Same figure treatment, used inline inside the Research prose so each
+       architecture sits directly under the paragraph that explains it. */
+    .research-figure { margin-bottom: 1.9rem; }
+
     .pub__venue {
       display: inline-block;
       font-size: .7rem;
@@ -1139,8 +1143,10 @@
             computer vision and multimodal AI. Since joining the <strong>Trustworthy AI Lab</strong> in 2022, I've
             worked on vision–language models and segmentation foundation models across medical imaging, mobility
             infrastructure, and remote sensing.</p>
-          <p>What I care about most is <strong>AI for social good</strong> — systems that don't just describe a scene,
-            but reason about it well enough to support real decisions.</p>
+          <p>What I care about most is <strong>spatial understanding and reasoning in vision–language models</strong>.
+            These systems describe a scene fluently and still get <em>where</em> badly wrong — what sits in front of
+            what, how far, which way to turn. I work on closing that gap, so a model's spatial claims are grounded in
+            visual evidence rather than asserted.</p>
         </div>
 
         
@@ -1205,8 +1211,36 @@
             for large-scale mobility-infrastructure segmentation from aerial and street-level imagery. It has since
             been adopted as a benchmark in subsequent NeurIPS work.</p>
           <p>I'm currently extending this toward stronger spatial reasoning in vision–language models at scale.
-            <em>SpatialCORE</em> (under review) targets spatially confident reasoning in large VLMs — pushing past
-            surface-level description toward predictions that are grounded in visual evidence rather than asserted.</p>
+            <a href="https://arxiv.org/abs/2609.38716" target="_blank" rel="noopener"><em>SpatialCORE</em></a>
+            (under review) targets spatially confident reasoning in large VLMs — pushing past surface-level
+            description toward predictions that are grounded in visual evidence rather than asserted.</p>
+
+          <a class="pub__figure research-figure" href="img/papers/spatialcore.jpg" target="_blank" rel="noopener"
+             data-placeholder="Add spatialcore.jpg" aria-label="Open the full-size SpatialCORE architecture figure">
+            <img src="img/papers/spatialcore.jpg" loading="lazy"
+                 onerror="var f=this.parentNode; f.classList.add('is-missing'); this.remove();"
+                 alt="SpatialCORE architecture: a policy LVLM answers a grounded spatial question about a driving scene by emitting 2D bounding boxes, a reasoning segment, and a final answer. Each sampled trajectory earns separate spatial, format, and answer rewards that combine into group-relative advantages driving a policy update. Lower panels detail the self-regulating spatial reward, which weighs predicted boxes against pseudo-ground-truth boxes using label similarity and box uncertainty, and the adaptive reward composition that gates the spatial reward on whether the answer was correct.">
+          </a>
+          <p>My most recent work,
+            <a href="https://arxiv.org/abs/2609.38717" target="_blank" rel="noopener"><em>Soft Spatial Reasoning</em></a>
+            (under review), goes after <em>how</em> these models think. Chain-of-thought makes an LVLM commit to one
+            discrete token at every reasoning step, even where the spatial interpretation is still uncertain — and a
+            single early mistake then propagates through everything that follows. Instead of committing, the model
+            carries a continuous soft state that mixes candidate token embeddings, letting several readings of a scene
+            stay alive at once. The catch is that the right amount of softness varies step to step: holding on to
+            rival candidates preserves a useful interpretation, but blending ones that imply contradictory spatial
+            relations only muddies what comes next. <em>AdaptSoft</em>, a learned controller, reads the hidden state
+            and the model's own predictive uncertainty to set that degree of softness at each step, trained by a
+            gradient-alignment objective that needs no step-level reasoning supervision. Across spatial benchmarks it
+            beats both hard and fixed-soft chain-of-thought on the same backbone.
+            <a href="https://github.com/rafiibnsultan/Soft_Spatial_Reasoning" target="_blank" rel="noopener">Code is on GitHub</a>.</p>
+
+          <a class="pub__figure research-figure" href="img/papers/soft-spatial-reasoning.jpg" target="_blank" rel="noopener"
+             data-placeholder="Add soft-spatial-reasoning.jpg" aria-label="Open the full-size Soft Spatial Reasoning architecture figure">
+            <img src="img/papers/soft-spatial-reasoning.jpg" loading="lazy"
+                 onerror="var f=this.parentNode; f.classList.add('is-missing'); this.remove();"
+                 alt="Soft Spatial Reasoning architecture: an LVLM policy answers a spatial question about a dashcam scene across several sampled rollouts, each a chain of continuous soft states rather than discrete tokens, scored by reward and combined into group-relative advantages for a GRPO update. The lower panel details adaptive softness control, where AdaptSoft reads the hidden state and the Shannon entropy of the candidate distribution to set a temperature governing how sharply candidate token embeddings are mixed into the next soft state.">
+          </a>
         </div>
 
         <div class="theme-block">
