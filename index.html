@@ -36,7 +36,7 @@
     "url": "https://rafiibnsultan.github.io/",
     "image": "https://rafiibnsultan.github.io/img/Picture.jpg",
     "jobTitle": "Ph.D. Candidate in Computer Science",
-    "email": "mailto:rafis@wayne.edu",
+    "email": "mailto:rafi.ruet13@gmail.com",
     "affiliation": {
       "@type": "CollegeOrUniversity",
       "name": "Wayne State University"
@@ -872,6 +872,27 @@
       margin-bottom: .5rem;
     }
 
+    .refs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+      gap: 1.4rem 2.5rem;
+    }
+    .ref__name {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.02rem;
+      font-weight: 600;
+      margin-bottom: .2rem;
+    }
+    .ref__role {
+      display: block;
+      font-size: .86rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: .3rem;
+    }
+    .ref__mail { font-size: .84rem; }
+
     .interests {
       list-style: none; margin: 0; padding: 0;
       display: grid;
@@ -1103,7 +1124,7 @@
         <a href="https://www.researchgate.net/profile/Rafi-Ibn-Sultan" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 0H4.4A4.4 4.4 0 000 4.4v15.2A4.4 4.4 0 004.4 24h15.2a4.4 4.4 0 004.4-4.4V4.4A4.4 4.4 0 0019.6 0M8.2 6.6c1.3 0 2.3.3 2.9 1 .6.6.9 1.5.9 2.6 0 1.2-.3 2.1-1 2.7-.4.4-.9.7-1.5.8l2.8 4.4H10l-2.5-4.1H6.4v4.1H4.6V6.6zm-1.8 1.5v4.4h1.6c.7 0 1.2-.2 1.6-.5.3-.4.5-.9.5-1.6 0-.8-.2-1.4-.5-1.7-.4-.4-.9-.6-1.7-.6zm10.9-1.7c1.4 0 2.5.5 3.1 1.4l-1.1.9c-.4-.6-1.1-.9-2-.9-1.6 0-2.6 1.2-2.6 3.3s1 3.4 2.6 3.4c1.3 0 2.1-.7 2.2-1.9v-.4h-2.1v-1.4h3.7v1.7c0 2.2-1.5 3.6-3.8 3.6-2.6 0-4.4-2-4.4-5s1.8-4.7 4.4-4.7"/></svg>
         </a>
-        <a href="mailto:rafis@wayne.edu" aria-label="Email" title="Email">
+        <a href="mailto:rafi.ruet13@gmail.com" aria-label="Email" title="Email">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2m0 4l-8 5-8-5V6l8 5 8-5z"/></svg>
         </a>
       </div>
@@ -1139,14 +1160,14 @@
           </span>
           <span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2m0 4l-8 5-8-5V6l8 5 8-5z"/></svg>
-            <a href="mailto:rafis@wayne.edu">rafis@wayne.edu</a>
+            <a href="mailto:rafi.ruet13@gmail.com">rafi.ruet13@gmail.com</a>
           </span>
         </div>
 
         <p class="job-market">
           <strong>On the academic job market.</strong> I'm seeking <strong>tenure-track Assistant Professor</strong>
           and <strong>Research Scientist</strong> positions, starting after I complete my Ph.D. in August 2027.
-          <a href="mailto:rafis@wayne.edu">Get in touch</a> — I'd be glad to talk.
+          <a href="mailto:rafi.ruet13@gmail.com">Get in touch</a> — I'd be glad to talk.
         </p>
 
         <div class="hero__bio">
@@ -1154,10 +1175,12 @@
             computer vision and multimodal AI. Since joining the <strong>Trustworthy AI Lab</strong> in 2022, I've
             worked on vision–language models and segmentation foundation models across medical imaging, mobility
             infrastructure, and remote sensing.</p>
-          <p>What I care about most is <strong>spatial understanding and reasoning in vision–language models</strong>.
-            These systems describe a scene fluently and still get <em>where</em> badly wrong — what sits in front of
-            what, how far, which way to turn. I work on closing that gap, so a model's spatial claims are grounded in
-            visual evidence rather than asserted.</p>
+          <p>My research is about <strong>how vision–language models learn to understand and reason about space</strong>.
+            A model can describe a scene accurately and still struggle to say how to move through it — which object
+            blocks the path, how far away it is, what that means for the next step. Where the image leaves those
+            relationships unclear, a confident answer can rest on a single plausible reading, and an early misjudgment
+            carries forward into everything that follows. I work on models whose spatial claims are grounded in visual
+            evidence rather than asserted.</p>
         </div>
 
         
@@ -1201,7 +1224,7 @@
           </span>
         </a>
         <p class="stats__note">
-          Per <a href="https://scholar.google.com/citations?hl=en&amp;user=d9YLRmEAAAAJ" target="_blank" rel="noopener">Google Scholar</a>, August 2026.
+          Per <a href="https://scholar.google.com/citations?hl=en&amp;user=d9YLRmEAAAAJ" target="_blank" rel="noopener">Google Scholar</a>, November 2026.
         </p>
       </div>
     </section>
@@ -1214,7 +1237,7 @@
 
         <div class="theme-block">
           <h3>Grounded Multimodal Reasoning for Accessibility</h3>
-          <p>My most recent work, <em>WalkGPT</em> (CVPR 2026), is a grounded vision–language model for pedestrian
+          <p>My work, <em>WalkGPT</em> (CVPR 2026), is a grounded vision–language model for pedestrian
             navigation and accessibility. It combines segmentation, depth estimation, and language reasoning to
             identify sidewalks, crosswalks, curb ramps, and accessibility barriers from real-world pedestrian-view
             imagery, then delivers step-by-step, context-aware guidance as a conversational agent.</p>
@@ -1427,21 +1450,21 @@
           <li>
             <div>
               <div class="pub-compact__title">On Federated Compositional Optimization: Algorithms, Analysis, and Guarantees</div>
-              <div class="pub-compact__authors">Prashant Khanduri, Chengyin Li, <b>Rafi Ibn Sultan</b>, et al.</div>
+              <div class="pub-compact__authors">Prashant Khanduri, Chengyin Li, <b>Rafi Ibn Sultan</b>, Aditi Sarker, Yao Qiang, J. Kliewer, Dongxiao Zhu</div>
             </div>
             <div class="pub-compact__venue">TMLR · 2026</div>
           </li>
           <li>
             <div>
               <div class="pub-compact__title">FluenceFormer: Transformer-Driven Multi-Beam Fluence Map Regression for Radiotherapy Planning</div>
-              <div class="pub-compact__authors">U. Mgboh, <b>Rafi Ibn Sultan</b>, J. Kim, K. Thind, Dongxiao Zhu</div>
+              <div class="pub-compact__authors">U. Mgboh, <b>Rafi Ibn Sultan</b>, J. Kim, Kundan Thind, Dongxiao Zhu</div>
             </div>
             <div class="pub-compact__venue">MIDL · 2026</div>
           </li>
           <li>
             <div>
               <div class="pub-compact__title">
-                <a href="https://arxiv.org/abs/2311.11319" target="_blank" rel="noopener">GeoSAM: Fine-tuning SAM with Multi-Modal Prompts for Mobility Infrastructure Segmentation</a>
+                <a href="https://ebooks.iospress.nl/doi/10.3233/FAIA250844" target="_blank" rel="noopener">GeoSAM: Fine-tuning SAM with Multi-Modal Prompts for Mobility Infrastructure Segmentation</a>
               </div>
               <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, Chengyin Li, Hui Zhu, Prashant Khanduri, Marco Brocanelli, Dongxiao Zhu</div>
             </div>
@@ -1450,7 +1473,7 @@
           <li>
             <div>
               <div class="pub-compact__title">Enhancing CT Image Segmentation Accuracy Through Ensemble Loss Function Optimization</div>
-              <div class="pub-compact__authors">Chengyin Li, Prashant Khanduri, Yao Qiang, <b>Rafi Ibn Sultan</b>, Indrin Chetty, Dongxiao Zhu</div>
+              <div class="pub-compact__authors">Chengyin Li, <b>Rafi Ibn Sultan</b>, Hassan Bagher-Ebadian, Yao Qiang, Kundan Thind, Dongxiao Zhu, Indrin J. Chetty</div>
             </div>
             <div class="pub-compact__venue">Medical Physics · 2025</div>
           </li>
@@ -1464,7 +1487,7 @@
           <li>
             <div>
               <div class="pub-compact__title">MulModSeg: Enhancing Unpaired Multi-Modal Medical Image Segmentation with Modality-Conditioned Text Embedding and Alternating Training</div>
-              <div class="pub-compact__authors">Chengyin Li, Hui Zhu, <b>Rafi Ibn Sultan</b>, Dongxiao Zhu</div>
+              <div class="pub-compact__authors">Chengyin Li, Hui Zhu, <b>Rafi Ibn Sultan</b>, Hassan Bagher-Ebadian, Prashant Khanduri, Indrin J. Chetty, Kundan Thind, Dongxiao Zhu</div>
             </div>
             <div class="pub-compact__venue">WACV · 2025</div>
           </li>
@@ -1473,7 +1496,7 @@
               <div class="pub-compact__title">
                 <a href="https://aapm.onlinelibrary.wiley.com/doi/epdf/10.1002/mp.16750" target="_blank" rel="noopener">A New Architecture Combining Convolutional and Transformer-Based Networks for Automatic 3D Multi-Organ Segmentation on CT Images</a>
               </div>
-              <div class="pub-compact__authors">Chengyin Li, Hassan Bagher-Ebadian, <b>Rafi Ibn Sultan</b>, Dongxiao Zhu, Indrin Chetty</div>
+              <div class="pub-compact__authors">Chengyin Li, Hassan Bagher-Ebadian, <b>Rafi Ibn Sultan</b>, M. Elshaikh, B. Movsas, Dongxiao Zhu, Indrin J. Chetty</div>
             </div>
             <div class="pub-compact__venue">Medical Physics · 2023</div>
           </li>
@@ -1547,7 +1570,7 @@
           <li>
             <div>
               <div class="pub-compact__title">
-                <a href="https://arxiv.org/abs/2609.38716" target="_blank" rel="noopener">SpatialCORE: Spatially Confident Reasoning for Large Vision-Language Models</a>
+                <a href="https://arxiv.org/abs/2609.38716" target="_blank" rel="noopener">SpatialCORE: Confidence-Aware Grounded Spatial Reasoning in Large Vision–Language Models</a>
               </div>
               <div class="pub-compact__authors"><b>Rafi Ibn Sultan</b>, Xiangyu Zhou, Md. Sajid Alam Chowdhury, Chengyin Li, Prashant Khanduri, Marco Brocanelli, Dongxiao Zhu · <a href="https://github.com/rafiibnsultan/SpatialCORE" target="_blank" rel="noopener">code</a></div>
             </div>
@@ -1577,17 +1600,17 @@
         <h2>Talks, coverage &amp; recognition</h2>
 
         <div class="media-grid reveal-child">
-          <div class="media-card" style="--i:0">
-            <span class="media-card__kind">Invited Talk</span>
+          <a class="media-card" href="https://youtu.be/Gv19BELyYX4" target="_blank" rel="noopener" style="--i:0">
+            <span class="media-card__kind">Invited Talk · Video</span>
             <div class="media-card__title">WalkGPT: Pixel-Grounded Navigation Guidance for Pedestrians</div>
-            <div class="media-card__meta">Best of CVPR 2026 Series, Voxel51 · July 2026 (virtual)</div>
-          </div>
+            <div class="media-card__meta">Best of CVPR 2026 Series, Voxel51 · July 2026</div>
+          </a>
 
-          <div class="media-card" style="--i:1">
-            <span class="media-card__kind">Invited Talk</span>
+          <a class="media-card" href="https://youtu.be/od8AjajF8TQ" target="_blank" rel="noopener" style="--i:1">
+            <span class="media-card__kind">Invited Talk · Video</span>
             <div class="media-card__title">WalkGPT: Grounded Vision–Language Conversation with Depth-Aware Segmentation for Pedestrian Navigation</div>
-            <div class="media-card__meta">Computer Vision Group, Cohere Labs Open Science Community · May 2026 (virtual)</div>
-          </div>
+            <div class="media-card__meta">Computer Vision Group, Cohere Labs Open Science Community · May 2026</div>
+          </a>
 
           <div class="media-card" style="--i:2">
             <span class="media-card__kind">Invited Talk</span>
@@ -1595,14 +1618,20 @@
             <div class="media-card__meta">Departmental Seminar, Wayne State University · January 2026</div>
           </div>
 
-          <a class="media-card" href="https://www.pbs.org/video/wayne-state-university-creates-ai-for-mobility-project-criquh/" target="_blank" rel="noopener" style="--i:3">
-            <span class="media-card__kind">Press</span>
-            <div class="media-card__title">Detroit PBS: Wayne State Creates AI for Mobility Project</div>
-            <div class="media-card__meta">Feature on our lab and GeoSAM · April 2024</div>
+          <a class="media-card" href="https://www.detroitpbs.org/news-media/one-detroit/wayne-state-universitys-ai-for-mobility-project-seeks-to-improve-detroits-public-transit-system/" target="_blank" rel="noopener" style="--i:3">
+            <span class="media-card__kind">Press · Video</span>
+            <div class="media-card__title">Wayne State University's AI for Mobility Project Seeks to Improve Detroit's Public Transit System</div>
+            <div class="media-card__meta">Interviewed for <i>One Detroit</i>, Detroit PBS · March 2024</div>
           </a>
 
-          <a class="media-card" href="https://youtu.be/I37hSEy7fXs" target="_blank" rel="noopener" style="--i:4">
-            <span class="media-card__kind">Conference Talk</span>
+          <a class="media-card" href="https://youtu.be/_pUyBhEemaI" target="_blank" rel="noopener" style="--i:4">
+            <span class="media-card__kind">Conference Talk · Video</span>
+            <div class="media-card__title">MedPlex — BMVC 2026 presentation</div>
+            <div class="media-card__meta">To be presented at the British Machine Vision Conference · Lancaster, UK · November 2026</div>
+          </a>
+
+          <a class="media-card" href="https://youtu.be/I37hSEy7fXs" target="_blank" rel="noopener" style="--i:5">
+            <span class="media-card__kind">Conference Talk · Video</span>
             <div class="media-card__title">AutoProSAM presentation at WACV 2025</div>
             <div class="media-card__meta">Tucson, Arizona · February 2025</div>
           </a>
@@ -1621,8 +1650,10 @@
 
         <h3 class="subhead">Conference Reviewing</h3>
         <ul class="chip-list">
+          <li>ICLR 2027</li>
           <li>AAAI 2027</li>
           <li>NeurIPS 2026</li>
+          <li>ACL Rolling Review 2026</li>
           <li>IJCAI-ECAI 2026</li>
           <li>BMVC 2026</li>
           <li><a href="https://2025.ijcnn.org/" target="_blank" rel="noopener">IJCNN 2025</a></li>
@@ -1639,9 +1670,42 @@
           <li><a href="https://www.sciencedirect.com/journal/computers-in-biology-and-medicine" target="_blank" rel="noopener">Computers in Biology and Medicine</a></li>
           <li><a href="https://www.sciencedirect.com/journal/biomedical-signal-processing-and-control" target="_blank" rel="noopener">Biomedical Signal Processing and Control</a></li>
           <li><a href="https://www.sciencedirect.com/journal/results-in-engineering" target="_blank" rel="noopener">Results in Engineering</a></li>
+          <li><a href="https://www.sciencedirect.com/journal/medical-image-analysis" target="_blank" rel="noopener">Medical Image Analysis</a></li>
           <li><a href="https://www.sciencedirect.com/journal/expert-systems-with-applications" target="_blank" rel="noopener">Expert Systems with Applications</a></li>
           <li>IEEE Transactions on Medical Imaging</li>
         </ul>
+
+        <h3 class="subhead">References</h3>
+        <div class="refs">
+          <div class="ref">
+            <span class="ref__name">Dongxiao Zhu, PhD</span>
+            <span class="ref__role">Professor, Department of Computer Science<br>
+              Director, Institute for AI and Data Science<br>
+              Wayne State University</span>
+            <a class="ref__mail" href="mailto:dzhu@wayne.edu">dzhu@wayne.edu</a>
+          </div>
+          <div class="ref">
+            <span class="ref__name">Kundan Thind, PhD, FCCPM</span>
+            <span class="ref__role">Division Head, Physics<br>
+              Department of Radiation Oncology<br>
+              Henry Ford Health</span>
+            <a class="ref__mail" href="mailto:kthind1@hfhs.org">kthind1@hfhs.org</a>
+          </div>
+          <div class="ref">
+            <span class="ref__name">Marco Brocanelli, PhD</span>
+            <span class="ref__role">Assistant Professor<br>
+              Department of Electrical and Computer Engineering<br>
+              The Ohio State University</span>
+            <a class="ref__mail" href="mailto:brocanelli.1@osu.edu">brocanelli.1@osu.edu</a>
+          </div>
+          <div class="ref">
+            <span class="ref__name">Prashant Khanduri, PhD</span>
+            <span class="ref__role">Assistant Professor<br>
+              Department of Computer Science<br>
+              Wayne State University</span>
+            <a class="ref__mail" href="mailto:khanduri.prashant@wayne.edu">khanduri.prashant@wayne.edu</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1653,8 +1717,12 @@
 
         <ul class="news" id="newsList">
           <li>
+            <span class="news__date">Oct 26, 2026</span>
+            <span class="news__body">The presentation for <b>MedPlex</b> — to be presented at <b>BMVC 2026</b> in Lancaster, UK this November — has been released. <a href="https://youtu.be/_pUyBhEemaI" target="_blank" rel="noopener">Watch it here</a>.</span>
+          </li>
+          <li>
             <span class="news__date">Oct 1, 2026</span>
-            <span class="news__body">Two new preprints are now on arXiv: <b>"Soft Spatial Reasoning"</b> (<a href="https://arxiv.org/abs/2609.38717" target="_blank" rel="noopener">paper</a>, <a href="https://github.com/rafiibnsultan/Soft_Spatial_Reasoning" target="_blank" rel="noopener">code</a>) and <b>"SpatialCORE: Spatially Confident Reasoning for Large Vision-Language Models"</b> (<a href="https://arxiv.org/abs/2609.38716" target="_blank" rel="noopener">paper</a>, <a href="https://github.com/rafiibnsultan/SpatialCORE" target="_blank" rel="noopener">code</a>).</span>
+            <span class="news__body">Two new preprints are now on arXiv: <b>"Soft Spatial Reasoning"</b> (<a href="https://arxiv.org/abs/2609.38717" target="_blank" rel="noopener">paper</a>, <a href="https://github.com/rafiibnsultan/Soft_Spatial_Reasoning" target="_blank" rel="noopener">code</a>) and <b>"SpatialCORE: Confidence-Aware Grounded Spatial Reasoning in Large Vision–Language Models"</b> (<a href="https://arxiv.org/abs/2609.38716" target="_blank" rel="noopener">paper</a>, <a href="https://github.com/rafiibnsultan/SpatialCORE" target="_blank" rel="noopener">code</a>).</span>
           </li>
           <li>
             <span class="news__date">Sep 25, 2026</span>
@@ -1662,7 +1730,7 @@
           </li>
           <li>
             <span class="news__date">Sep 4, 2026</span>
-            <span class="news__body">Our work with Henry Ford Hospital, <b>"A Neighborhood Attention Transformer Network for Enhanced 3D Segmentation of the Left Anterior Descending Artery,"</b> is now officially published in <i>Medical Physics</i>. <a href="https://aapm.onlinelibrary.wiley.com/doi/10.1002/mp.70653" target="_blank" rel="noopener">Read it here</a>, or the <a href="https://arxiv.org/abs/2608.12274" target="_blank" rel="noopener">open-access version on arXiv</a>.</span>
+            <span class="news__body">Our work with Henry Ford Health, <b>"A Neighborhood Attention Transformer Network for Enhanced 3D Segmentation of the Left Anterior Descending Artery,"</b> is now officially published in <i>Medical Physics</i>. <a href="https://aapm.onlinelibrary.wiley.com/doi/10.1002/mp.70653" target="_blank" rel="noopener">Read it here</a>, or the <a href="https://arxiv.org/abs/2608.12274" target="_blank" rel="noopener">open-access version on arXiv</a>.</span>
           </li>
           <li>
             <span class="news__date">Aug 7, 2026</span>
@@ -1670,7 +1738,7 @@
           </li>
           <li>
             <span class="news__date">Aug 4, 2026</span>
-            <span class="news__body">Our paper with Henry Ford Hospital, <b>"A Neighborhood Attention Transformer Network for Enhanced 3D Segmentation of the Left Anterior Descending Artery,"</b> has been accepted to <i>Medical Physics</i>.</span>
+            <span class="news__body">Our paper with Henry Ford Health, <b>"A Neighborhood Attention Transformer Network for Enhanced 3D Segmentation of the Left Anterior Descending Artery,"</b> has been accepted to <i>Medical Physics</i>.</span>
           </li>
           <li>
             <span class="news__date">Apr 16, 2026</span>
@@ -1748,10 +1816,22 @@
               <li>Lead independent research on grounded vision–language models for spatial reasoning, pedestrian
                 navigation, and medical image segmentation — from problem formulation through publication, resulting
                 in first-author papers at CVPR and ECAI.</li>
-              <li>Drive an ongoing clinical collaboration with Henry Ford Hospital on coronary CT segmentation,
-                translating clinician requirements into model design and working directly with radiology partners on
-                data, evaluation, and deployment-relevant validation.</li>
+              <li>Drive an ongoing clinical collaboration with Henry Ford Health on coronary CT segmentation —
+                developing and validating a deep learning method for left anterior descending artery segmentation
+                from non-contrast planning CT, alongside medical physicists and clinical researchers.</li>
               <li>Mentor junior Ph.D. students on research methodology, experimental design, and paper writing.</li>
+            </ul>
+          </li>
+          <li>
+            <div class="timeline__head">
+              <span class="timeline__title">Guest Lecturer — CSC 5991</span>
+              <span class="timeline__date">Winter 2026</span>
+            </div>
+            <div class="timeline__meta">
+              <i>Trustworthy AI for Large Language and Vision-Language Models</i>, Wayne State University · Detroit, MI
+            </div>
+            <ul class="timeline__points">
+              <li>Taught the large vision–language model portion of this graduate course.</li>
             </ul>
           </li>
           <li>
@@ -1933,7 +2013,7 @@
           <a href="https://scholar.google.com/citations?hl=en&amp;user=d9YLRmEAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
           <a href="https://github.com/rafiibnsultan" target="_blank" rel="noopener">GitHub</a>
           <a href="https://www.linkedin.com/in/rafi-ibn-sultan/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:rafis@wayne.edu">rafis@wayne.edu</a>
+          <a href="mailto:rafi.ruet13@gmail.com">rafi.ruet13@gmail.com</a>
         </nav>
       </div>
     </footer>
